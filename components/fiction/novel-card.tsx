@@ -186,7 +186,7 @@ export function NovelRow({ novel }: { novel: Novel }) {
         url={novel.cover_url}
         title={novel.title}
         className="w-11"
-        showFallbackTitle={false}
+        showFallbackLabel={false}
       />
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-1.5">

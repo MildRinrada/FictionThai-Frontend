@@ -79,7 +79,7 @@ export function DiscoverQuestions({ columns }: { columns: DiscoverColumn[] }) {
                       url={novel.cover_url}
                       title={novel.title}
                       className="w-12"
-                      showFallbackTitle={false}
+                      showFallbackLabel={false}
                     />
                     <span className="min-w-0 self-center">
                       <span className="block truncate font-serif text-sm font-semibold group-hover:text-primary">

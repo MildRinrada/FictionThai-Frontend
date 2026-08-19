@@ -407,7 +407,7 @@ function Hero({
             url={spotlight.cover_url}
             title={spotlight.title}
             className="w-28 shrink-0 self-center md:w-32"
-            showFallbackTitle={false}
+            showFallbackLabel={false}
           />
           <span className="flex min-w-0 flex-1 flex-col justify-center">
             <span className="mono-label text-primary">มาใหม่ · นักเขียนหน้าใหม่</span>
@@ -559,7 +559,7 @@ function ResumeCard({ entry }: { entry: ContinueReadingEntry }) {
           url={novel.cover_url}
           title={novel.title}
           className="w-11"
-          showFallbackTitle={false}
+          showFallbackLabel={false}
         />
         <div className="min-w-0 flex-1">
           <p className="truncate font-serif text-sm font-semibold group-hover:text-primary">
@@ -601,7 +601,7 @@ function ResumeStrip({ entry }: { entry: ContinueReadingEntry }) {
         url={novel.cover_url}
         title={novel.title}
         className="w-10 shrink-0"
-        showFallbackTitle={false}
+        showFallbackLabel={false}
       />
       <span className="min-w-0 flex-1">
         <span className="block truncate font-serif text-sm font-semibold group-hover:text-primary">

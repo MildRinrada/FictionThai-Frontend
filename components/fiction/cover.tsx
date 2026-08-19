@@ -19,10 +19,19 @@
  * ratio and squashes the artwork by however much taller the text happens to
  * be. The ratio then depends on the length of the title beside it.
  *
- * A fiction without a cover falls back to a striped warm neutral plus its own
- * title set in serif - a legible object rather than a grey hole.
+ * A fiction without a cover gets a striped warm neutral, a picture glyph, and
+ * the words "ไม่มีภาพหน้าปก". It used to repeat the fiction's own title, which
+ * every card already prints directly underneath - so the box said nothing new
+ * and read like artwork that had failed to load. Naming the absence is the
+ * honest version, and it tells a writer looking at their own shelf exactly
+ * which fiction still needs a cover.
+ *
+ * The glyph and the caption size themselves against the BOX, not the page
+ * (`.cover-fallback` in globals.css), so the same component serves a 36px list
+ * thumbnail and a full-width shelf card without a size prop.
  */
 
+import { Icon } from "@/components/ui/icon";
 import { COVER_ASPECT } from "@/lib/cover";
 
 export interface CoverProps {
@@ -30,19 +39,23 @@ export interface CoverProps {
   title: string;
   /** Tailwind width class for the box, e.g. "w-11" or "w-full". */
   className?: string;
-  /** Show the title inside the placeholder. Off for very small covers. */
-  showFallbackTitle?: boolean;
+  /**
+   * Show the "ไม่มีภาพหน้าปก" caption under the glyph. Off for covers that sit
+   * beside their own title anyway; below ~4rem the stylesheet drops it too,
+   * because at that size it is a smudge and the glyph already says it.
+   */
+  showFallbackLabel?: boolean;
 }
 
 export function Cover({
   url,
   title,
   className = "w-full",
-  showFallbackTitle = true,
+  showFallbackLabel = true,
 }: CoverProps) {
   return (
     <span
-      className={`relative block ${COVER_ASPECT} shrink-0 self-start overflow-hidden rounded-sm border border-border ${!url ? "art-placeholder" : ""} ${className}`}
+      className={`relative block ${COVER_ASPECT} shrink-0 self-start overflow-hidden rounded-sm border border-border ${!url ? "art-placeholder cover-fallback" : ""} ${className}`}
     >
       {url ? (
         // Covers are served from object storage, an origin the image optimizer
@@ -55,11 +68,21 @@ export function Cover({
           decoding="async"
           className="size-full object-cover"
         />
-      ) : showFallbackTitle ? (
-        <span className="absolute inset-0 flex items-center justify-center p-2 text-center font-serif text-[11px] leading-snug font-medium text-text-muted">
-          <span className="line-clamp-3">{title}</span>
+      ) : (
+        <span
+          className="absolute inset-0 flex flex-col items-center justify-center gap-[6%] p-2 text-center text-text-muted"
+          // The fiction is named beside every cover; repeating it to a screen
+          // reader here would be noise.
+          title={title}
+        >
+          <Icon name="image" className="cover-fallback-glyph opacity-55" />
+          {showFallbackLabel ? (
+            <span className="cover-fallback-text leading-snug font-medium">
+              ไม่มีภาพหน้าปก
+            </span>
+          ) : null}
         </span>
-      ) : null}
+      )}
     </span>
   );
 }

@@ -66,7 +66,7 @@ function ResultCover({ novel, className }: { novel: Novel; className: string }) 
       <span className={`block ${adult ? "blur-sm" : ""}`}>
         {/* A coverless work keeps a plain placeholder - repeating the title
             inside the box just prints it twice on one card (D4). */}
-        <Cover url={novel.cover_url} title={novel.title} showFallbackTitle={false} />
+        <Cover url={novel.cover_url} title={novel.title} showFallbackLabel={false} />
       </span>
       {adult ? (
         <span className="absolute inset-0 flex items-center justify-center rounded-sm bg-black/25 font-mono text-[11px] font-semibold text-white">

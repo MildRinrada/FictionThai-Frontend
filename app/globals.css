@@ -617,6 +617,37 @@ body {
   background: repeating-linear-gradient(135deg, #24242c 0 6px, #1c1c22 6px 12px);
 }
 
+/*
+ * The "ไม่มีภาพหน้าปก" placeholder inside that box (components/fiction/cover.tsx).
+ *
+ * Sized in container units, not page units: the same markup is a 36px thumbnail
+ * in the community sidebar and a full-width card on a shelf, and a fixed icon
+ * size would either vanish in one or swallow the other. `cqw` is a percentage
+ * of the cover's own width, so one rule covers every call site and no size prop
+ * has to be threaded through.
+ *
+ * The caption disappears under 4rem rather than shrinking into a grey smudge -
+ * at that width the glyph alone already carries the meaning.
+ */
+.cover-fallback {
+  container-type: inline-size;
+}
+
+.cover-fallback-glyph {
+  width: min(34cqw, 2.5rem);
+  height: auto;
+}
+
+.cover-fallback-text {
+  font-size: min(9cqw, 0.6875rem);
+}
+
+@container (max-width: 4rem) {
+  .cover-fallback-text {
+    display: none;
+  }
+}
+
 /* Thai display type clips its tone marks below ~1.35 line-height. */
 h1,
 h2,

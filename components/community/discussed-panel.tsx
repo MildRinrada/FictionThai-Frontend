@@ -39,7 +39,7 @@ export function DiscussedPanel({ items }: { items: DiscussedFiction[] }) {
                 url={fiction.cover_url ?? undefined}
                 title={fiction.novel_title}
                 className="w-9"
-                showFallbackTitle={false}
+                showFallbackLabel={false}
               />
               <span className="min-w-0 flex-1">
                 <span className="block truncate font-serif text-[13px] leading-snug font-semibold group-hover:text-primary">

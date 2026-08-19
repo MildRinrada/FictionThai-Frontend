@@ -43,7 +43,7 @@ export function ReferenceCard({
         url={reference.cover_url ?? undefined}
         title={reference.novel_title}
         className="w-11"
-        showFallbackTitle={false}
+        showFallbackLabel={false}
       />
 
       <span className="min-w-0 flex-1">
