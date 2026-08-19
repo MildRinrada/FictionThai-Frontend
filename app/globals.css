@@ -1,0 +1,677 @@
+@import "tailwindcss";
+
+/*
+ * FictionThai design tokens - docs/05 - Design System.md.
+ *
+ * Components consume tokens, never raw hex values (docs/05 §35), so the theme
+ * can change without touching component code.
+ *
+ * Direction: Warm Indigo + Paper Cream + Muted Coral. Deliberately distinct
+ * from the teal/pink/orange/purple already owned by the major Thai platforms
+ * (docs/05 §2).
+ */
+
+:root {
+  /* Primary - Warm Indigo. An interaction colour, not a wash: docs/05 §8
+     targets 70–80% neutral surfaces, 5–10% primary.
+
+     50–500 are calibrated warm and low-chroma (docs/DESIGN-DIRECTION.md §4).
+     The stock Tailwind violet they replaced read as ธัญวลัย purple the moment
+     it was used as a light fill, which is the one competitor collision the
+     palette cannot afford. The 600 anchor is unchanged. */
+  --color-primary-50: #f6f5f8;
+  --color-primary-100: #eceaf1;
+  --color-primary-200: #dad7e3;
+  --color-primary-300: #bdb8cd;
+  --color-primary-400: #9691b0;
+  --color-primary-500: #6f68a0;
+  --color-primary-600: #4f46a5;
+  --color-primary-700: #433889;
+  --color-primary-800: #37306f;
+  --color-primary-900: #2e285c;
+  --color-primary-950: #1f1b3d;
+
+  /* Secondary - Muted Coral. Warmth and emotional interactions only; never
+     primary navigation or major buttons (docs/05 §4). */
+  --color-secondary-50: #fff5f5;
+  --color-secondary-100: #fdeaea;
+  --color-secondary-200: #f8d4d4;
+  --color-secondary-300: #f2b5b5;
+  --color-secondary-400: #e89696;
+  --color-secondary-500: #d97777;
+  --color-secondary-600: #c45f62;
+  --color-secondary-700: #a94d52;
+  --color-secondary-800: #893f45;
+  --color-secondary-900: #70363b;
+  --color-secondary-950: #431f24;
+
+  /* Paper - warm neutrals. Reading never uses pure white (docs/05 §5). */
+  --color-paper-50: #fffefb;
+  --color-paper-100: #fcfaf5;
+  --color-paper-200: #f5f1e8;
+  --color-paper-300: #eae4d7;
+
+  /* Semantic colours stay separate from brand colours (docs/05 §7). */
+  --color-success: #23845b;
+  --color-warning: #a66a00;
+  --color-error: #c43d4b;
+  --color-info: #496a91;
+
+  /* Light theme surfaces (docs/05 §9). */
+  --color-background: #fcfaf5;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f5f1e8;
+  --color-border: #e5e0d6;
+
+  /* A border one step quieter than --color-border, for rules *inside* a card
+     where the card's own edge already carries the separation. */
+  --color-hairline: #ede9e0;
+
+  /* Never pure black text (docs/05 §9). */
+  --color-text: #292731;
+  --color-text-secondary: #625e69;
+  --color-text-muted: #8b8791;
+
+  --color-primary: var(--color-primary-600);
+  --color-secondary: var(--color-secondary-500);
+
+  /* Reading surface, slightly warmer than the application (docs/05 §9).
+     `muted` and `rule` are part of the theme because the reader swaps all four
+     together - a sepia page with an application-grey rule looks broken. */
+  --color-reader-background: #fcfaf5;
+  --color-reader-text: #292731;
+  --color-reader-muted: #8b8791;
+  --color-reader-rule: #e5e0d6;
+
+  /* Radius (docs/05 §15) - literary, not playful. */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 13px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  /* Shadows, used sparingly (docs/05 §16). Tinted with the text colour rather
+     than neutral black so they sit on paper without going grey. */
+  --shadow-sm: 0 1px 2px rgb(41 39 49 / 0.05);
+  --shadow-md: 0 8px 24px rgb(41 39 49 / 0.08);
+  --shadow-lg: 0 12px 32px rgb(41 39 49 / 0.12);
+  --shadow-popover: 0 16px 40px rgb(41 39 49 / 0.16);
+  --shadow-modal: 0 24px 60px rgb(41 39 49 / 0.22);
+
+  /* Reading measure: long-form must never span the full desktop width
+     (docs/05 §13). The subtraction reserves the gutters the reader's side
+     navigation sits in, so the measure narrows before it collides. */
+  --reading-width: min(820px, 100vw - 220px);
+  --reading-font-size: 19px;
+  --reading-line-height: 1.9;
+
+  /* Page frame. Every full-width surface uses the same container so headers,
+     content, and the footer align down the page. */
+  --page-width: 1120px;
+  --page-gutter: 40px;
+
+  /* The studio measure. Reader surfaces are narrow on purpose - a line of prose
+     has a comfortable length and 1120px already reserves the gutters for it.
+     A writing surface is the opposite problem: the studio spends the width on a
+     rail, a composer, and a publishing panel at once, and at --page-width the
+     composer is left with about 500px, which is narrower than what it produces.
+     A separate token rather than widening --page-width, so the reader's measure
+     stays exactly where docs/05 §13 put it. */
+  --studio-width: 1440px;
+
+  /* The chrome measure (§13R). The header and the footer frame every page, so
+     they take the widest of the three: a header that stops short of the studio
+     beneath it reads as a mistake, not as a measure. */
+  --shell-width: 1600px;
+}
+
+/*
+ * Dark mode is a designed theme, not an inversion (docs/05 §6): layered dark
+ * neutrals rather than #000, and a lighter primary so it separates from the
+ * background.
+ *
+ * Supported both via the `.dark` class (explicit user choice) and
+ * `prefers-color-scheme` (the `system` default in user_preferences.theme).
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-background: #111116;
+    --color-surface: #19191f;
+    --color-surface-secondary: #222229;
+    --color-border: #303039;
+    --color-hairline: #26262e;
+
+    --color-text: #f3f1f7;
+    --color-text-secondary: #b8b5c1;
+    --color-text-muted: #85818f;
+
+    --color-primary: #a8a1d4;
+    --color-secondary: #e59696;
+
+    /* The numbered shades, re-aimed for dark (docs/05 §6: a designed theme,
+       not an inversion): 50-300 are washes and tinted borders, so they go
+       DARK; 400-600 carry text and must go LIGHT. Same meaning per step,
+       opposite direction. */
+    --color-primary-50: #201e2e;
+    --color-primary-100: #282540;
+    --color-primary-200: #3a3557;
+    --color-primary-300: #4c4670;
+    --color-primary-400: #8d86b5;
+    --color-primary-500: #a8a1d4;
+    --color-primary-600: #b7b1dd;
+
+    --color-secondary-50: #2e2124;
+    --color-secondary-100: #3a282c;
+    --color-secondary-200: #4d3236;
+    --color-secondary-300: #643f44;
+    --color-secondary-400: #c78585;
+    --color-secondary-500: #d99191;
+    --color-secondary-600: #e5a1a1;
+
+    --color-paper-50: #16151a;
+    --color-paper-100: #1a191f;
+    --color-paper-200: #222129;
+    --color-paper-300: #2c2a33;
+
+    --color-success: #55c58b;
+    --color-warning: #e7b65b;
+    --color-error: #f27c86;
+    --color-info: #8fb4e5;
+
+    --color-reader-background: #111116;
+    --color-reader-text: #e7e4eb;
+    --color-reader-muted: #8f8b99;
+    --color-reader-rule: #33333d;
+  }
+}
+
+.dark {
+  --color-background: #111116;
+  --color-surface: #19191f;
+  --color-surface-secondary: #222229;
+  --color-border: #303039;
+  --color-hairline: #26262e;
+
+  --color-text: #f3f1f7;
+  --color-text-secondary: #b8b5c1;
+  --color-text-muted: #85818f;
+
+  --color-primary: #a8a1d4;
+  --color-secondary: #e59696;
+
+  --color-primary-50: #201e2e;
+  --color-primary-100: #282540;
+  --color-primary-200: #3a3557;
+  --color-primary-300: #4c4670;
+  --color-primary-400: #8d86b5;
+  --color-primary-500: #a8a1d4;
+  --color-primary-600: #b7b1dd;
+
+  --color-secondary-50: #2e2124;
+  --color-secondary-100: #3a282c;
+  --color-secondary-200: #4d3236;
+  --color-secondary-300: #643f44;
+  --color-secondary-400: #c78585;
+  --color-secondary-500: #d99191;
+  --color-secondary-600: #e5a1a1;
+
+  --color-paper-50: #16151a;
+  --color-paper-100: #1a191f;
+  --color-paper-200: #222129;
+  --color-paper-300: #2c2a33;
+
+  --color-success: #55c58b;
+  --color-warning: #e7b65b;
+  --color-error: #f27c86;
+  --color-info: #8fb4e5;
+
+  --color-reader-background: #111116;
+  --color-reader-text: #e7e4eb;
+  --color-reader-muted: #8f8b99;
+  --color-reader-rule: #33333d;
+}
+
+/*
+ * Manuscript colours (§13N).
+ *
+ * A CLOSED palette rather than a colour picker, and the reason is docs/05 §6:
+ * dark mode here is a designed theme, not an inversion, so a manuscript that
+ * carried a raw hex would be unreadable in one of the two themes and the author
+ * would never see it happen. Each name below is defined TWICE - a deeper tone
+ * on parchment, a lighter one on dark - so the author picks a MEANING ("this
+ * line is red") and the platform keeps it legible wherever it is read.
+ *
+ * Written as plain classes rather than Tailwind utilities on purpose: the class
+ * names come from parsed manuscript text, which no build-time scanner can see.
+ */
+:root {
+  --content-red: #a8261e;
+  --content-orange: #94550c;
+  --content-green: #1c6b3c;
+  --content-blue: #1b4f9c;
+  --content-purple: #63389b;
+  --content-grey: #6f6b78;
+
+  --content-mark-yellow: #fbf0a4;
+  --content-mark-green: #c8ecd2;
+  --content-mark-blue: #cfe1fb;
+  --content-mark-pink: #fbd6e2;
+  --content-mark-text: #292731;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --content-red: #f28c86;
+    --content-orange: #e5ae6a;
+    --content-green: #74d3a0;
+    --content-blue: #93bcf2;
+    --content-purple: #bfa8ee;
+    --content-grey: #a09ca9;
+
+    --content-mark-yellow: #6b5a1c;
+    --content-mark-green: #1f5136;
+    --content-mark-blue: #23446f;
+    --content-mark-pink: #6a2b44;
+    --content-mark-text: #f3f1f7;
+  }
+}
+
+.dark {
+  --content-red: #f28c86;
+  --content-orange: #e5ae6a;
+  --content-green: #74d3a0;
+  --content-blue: #93bcf2;
+  --content-purple: #bfa8ee;
+  --content-grey: #a09ca9;
+
+  --content-mark-yellow: #6b5a1c;
+  --content-mark-green: #1f5136;
+  --content-mark-blue: #23446f;
+  --content-mark-pink: #6a2b44;
+  --content-mark-text: #f3f1f7;
+}
+
+.ft-red { color: var(--content-red); }
+.ft-orange { color: var(--content-orange); }
+.ft-green { color: var(--content-green); }
+.ft-blue { color: var(--content-blue); }
+.ft-purple { color: var(--content-purple); }
+.ft-grey { color: var(--content-grey); }
+
+.ft-mark-yellow,
+.ft-mark-green,
+.ft-mark-blue,
+.ft-mark-pink {
+  color: var(--content-mark-text);
+  border-radius: 3px;
+  padding-inline: 0.15em;
+}
+/*
+ * The live writing surface (§13N).
+ *
+ * A contenteditable holds real elements while the author types, so it needs the
+ * block rhythm the reader has - otherwise "what you see" is not what they get,
+ * which is the whole claim the editor makes. Deliberately NOT `pre-wrap`: the
+ * browser edits <br> elements here, and pre-wrap would double every line break.
+ */
+.ft-editor:empty::before,
+.ft-editor > p:only-child:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+.ft-editor > * { margin-block: 0 1.15em; }
+.ft-editor > *:last-child { margin-bottom: 0; }
+.ft-editor h1,
+.ft-editor h2 {
+  font-family: var(--font-noto-serif-thai), serif;
+  font-size: 1.35em;
+  font-weight: 600;
+  margin-block: 1.4em 0.6em;
+}
+.ft-editor h3 {
+  font-family: var(--font-noto-serif-thai), serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  margin-block: 1.2em 0.5em;
+}
+.ft-editor blockquote {
+  border-inline-start: 2px solid var(--color-border);
+  padding-inline-start: 1rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+.ft-editor ul { list-style: disc; padding-inline-start: 1.5rem; }
+.ft-editor ol { list-style: decimal; padding-inline-start: 1.5rem; }
+.ft-editor li { margin-bottom: 0.35em; }
+/* The rule is drawn as a background inside a taller box: a 1px border was a
+   1px click target, which is why a คั่นฉาก could never be selected to delete
+   (editor review 2026-08 item 2). */
+.ft-editor hr {
+  border: 0;
+  height: 17px;
+  margin-block: 1.1em;
+  background: linear-gradient(var(--color-border), var(--color-border)) center / 100% 1px
+    no-repeat;
+  cursor: pointer;
+}
+.ft-editor hr[data-picked="true"] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.ft-editor img { max-height: 22rem; width: auto; border-radius: 6px; }
+/* The picture the writer has clicked. Selecting it is what makes the alignment
+   buttons act on it, so it has to LOOK selected. */
+.ft-editor img[data-picked="true"] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.ft-editor a { color: var(--color-primary); text-decoration: underline; }
+
+/* Where a jump from the outline landed (docs/EDITOR.md). A smooth scroll ends somewhere
+   the eye has to re-find; this says which paragraph it was aiming at, and then
+   gets out of the way. It is a display state on the element, never a character
+   in the manuscript. */
+.ft-editor [data-jumped] {
+  background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-radius: 4px;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ft-editor [data-jumped] { transition: background-color 240ms ease-out; }
+}
+
+/* The same first-line indent the reader gets, for the same reason - what the
+   writer sees while typing has to be what a reader sees (§13Q). */
+.ft-editor p { text-indent: 2em; }
+.ft-editor p.ft-typed-indent,
+.ft-editor blockquote p,
+.ft-editor p:has(> img) {
+  text-indent: 0;
+}
+
+.ft-mark-yellow { background-color: var(--content-mark-yellow); }
+.ft-mark-green { background-color: var(--content-mark-green); }
+.ft-mark-blue { background-color: var(--content-mark-blue); }
+.ft-mark-pink { background-color: var(--content-mark-pink); }
+
+/* Expose the tokens to Tailwind so utilities such as `bg-surface` and
+   `text-muted` resolve to the theme rather than hard-coded colours. */
+@theme inline {
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-secondary: var(--color-surface-secondary);
+  --color-border: var(--color-border);
+  --color-hairline: var(--color-hairline);
+
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+
+  /* The numbered shades. Only variables named HERE become utilities - a
+     shade that lives in :root alone makes `bg-primary-100` compile to
+     nothing, silently, which is exactly what happened: every light tint and
+     tinted border in the app was transparent until 2026-08-16. */
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+
+  --color-secondary-50: var(--color-secondary-50);
+  --color-secondary-100: var(--color-secondary-100);
+  --color-secondary-200: var(--color-secondary-200);
+  --color-secondary-300: var(--color-secondary-300);
+  --color-secondary-400: var(--color-secondary-400);
+  --color-secondary-500: var(--color-secondary-500);
+  --color-secondary-600: var(--color-secondary-600);
+  --color-secondary-700: var(--color-secondary-700);
+  --color-secondary-800: var(--color-secondary-800);
+  --color-secondary-900: var(--color-secondary-900);
+  --color-secondary-950: var(--color-secondary-950);
+
+  --color-paper-50: var(--color-paper-50);
+  --color-paper-100: var(--color-paper-100);
+  --color-paper-200: var(--color-paper-200);
+  --color-paper-300: var(--color-paper-300);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+
+  --color-reader-background: var(--color-reader-background);
+  --color-reader-text: var(--color-reader-text);
+  --color-reader-muted: var(--color-reader-muted);
+  --color-reader-rule: var(--color-reader-rule);
+
+  --font-sans: var(--font-noto-sans-thai), system-ui, sans-serif;
+  --font-serif: var(--font-noto-serif-thai), var(--font-noto-sans-thai), serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-modal: var(--shadow-modal);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-noto-sans-thai), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* A visible focus state is a WCAG 2.2 AA requirement (docs/05 §31). */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* docs/05 §32: motion must respect the user's preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Reader themes (docs/06 §4). The reader sets `data-reader-theme` on the
+ * reading root; every reader token is redefined together so a theme change can
+ * never leave an application-grey rule on a sepia page.
+ *
+ * `paper` is the default and therefore needs no block - it is what :root
+ * already holds. `night` and `dark` are distinct on purpose: `night` is the
+ * designed dark theme, `dark` is the true-black variant for OLED screens.
+ */
+[data-reader-theme="sepia"] {
+  --color-reader-background: #f4e9d8;
+  --color-reader-text: #3b2f22;
+  --color-reader-muted: #7a6a55;
+  --color-reader-rule: #e2d3b8;
+}
+
+[data-reader-theme="night"] {
+  --color-reader-background: #1e1e24;
+  --color-reader-text: #ddd9e3;
+  --color-reader-muted: #8f8b99;
+  --color-reader-rule: #33333d;
+}
+
+[data-reader-theme="dark"] {
+  --color-reader-background: #000000;
+  --color-reader-text: #c8c4ce;
+  --color-reader-muted: #7b7784;
+  --color-reader-rule: #26262c;
+}
+
+/*
+ * The reading surface. Applied by the reader regardless of which renderer
+ * (standard or chat) is active, so typography stays consistent across formats.
+ *
+ * Every value reads from a token the reader's settings panel overrides inline,
+ * so changing the face or the measure is a variable write rather than a class
+ * swap - and the chat renderer inherits the same measure for free.
+ */
+.reading-surface {
+  max-width: var(--reading-width);
+  margin-inline: auto;
+  font-family: var(--reading-font-family, var(--font-noto-serif-thai), serif);
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  color: var(--color-reader-text);
+}
+
+/*
+ * Prose paragraphs preserve the author's own whitespace, and take the Thai
+ * first-line indent from CSS (§13Q).
+ *
+ * ย่อหน้าอัตโนมัติ used to TYPE two ideographic spaces into the manuscript. That
+ * made the indent something a writer could delete by accident, something a
+ * paste from another site never got, and something that had to be re-inserted
+ * on every Enter. As a display rule it is simply true of every paragraph: the
+ * first line is indented, the caret cannot fall inside it because there is
+ * nothing there to fall into, and pasted text is indented the moment it lands.
+ *
+ * `.ft-typed-indent` is the opt-out for a paragraph that already begins with
+ * the old typed spaces. Those characters are the author's text and are never
+ * removed, so the rule stands down in front of them instead.
+ */
+.reading-surface p,
+.ft-prose p {
+  white-space: pre-wrap;
+  margin-block: 0 1.15em;
+  text-indent: 2em;
+}
+.reading-surface p:last-child,
+.ft-prose p:last-child {
+  margin-bottom: 0;
+}
+.reading-surface p.ft-typed-indent,
+.reading-surface blockquote p,
+.reading-surface p:has(> img),
+.ft-prose p.ft-typed-indent,
+.ft-prose blockquote p,
+.ft-prose p:has(> img) {
+  text-indent: 0;
+}
+
+/*
+ * Editorial micro-label. Mono, tracked out, uppercase - the quiet structural
+ * voice that separates FictionThai's sections from the coloured section headers
+ * every competitor uses.
+ */
+.mono-label {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/*
+ * Cover and avatar placeholder. Fiction without artwork still has to hold its
+ * shape in a grid, and a striped warm neutral reads as "artwork pending"
+ * rather than as a broken image.
+ */
+.art-placeholder {
+  background: repeating-linear-gradient(
+    135deg,
+    #ede7db 0 6px,
+    #f5f1e8 6px 12px
+  );
+}
+
+/* Same three-state pattern as the colour tokens above: light is the bare
+   default, and only the dark states override it. Writing the dark stripes as an
+   unguarded rule would paint every cover charcoal on the light theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .art-placeholder {
+    background: repeating-linear-gradient(135deg, #24242c 0 6px, #1c1c22 6px 12px);
+  }
+}
+
+.dark .art-placeholder {
+  background: repeating-linear-gradient(135deg, #24242c 0 6px, #1c1c22 6px 12px);
+}
+
+/* Thai display type clips its tone marks below ~1.35 line-height. */
+h1,
+h2,
+h3 {
+  line-height: 1.35;
+}
+
+/*
+ * โหมดอ่าน - the shell slides away while someone is reading.
+ *
+ * `ChromeAutoHide` sets `data-chrome="hidden"` on <html> when the reader
+ * scrolls DOWN inside /read, and removes it the moment they scroll up. The
+ * movement lives here rather than in React so that scrolling does not
+ * re-render the header sixty times a second.
+ *
+ * `prefers-reduced-motion` gets the same hiding with no animation: the point
+ * is the quiet page, not the slide.
+ */
+[data-shell] {
+  transition: transform 180ms ease;
+}
+
+html[data-chrome="hidden"] [data-shell="header"] {
+  transform: translateY(-100%);
+}
+
+html[data-chrome="hidden"] [data-shell="mobile"] {
+  transform: translateY(100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-shell] {
+    transition: none;
+  }
+}
+
+/*
+ * Buttons are pointers again (settings review round 3). Tailwind v4's
+ * preflight leaves `button` at `cursor: default`, which read as "this button
+ * has no hover" everywhere on the site. Links already point; controls should
+ * too - except when disabled, where the arrow honestly says "not now".
+ */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/*
+ * The speaker strip scrolls sideways without a full-width scrollbar under it
+ * (chat-editor review 2026-08, item 1): edge fades and overlay arrows say
+ * "there is more" instead. The class hides the bar, never the scrolling.
+ */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
