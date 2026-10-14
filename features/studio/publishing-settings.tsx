@@ -93,7 +93,7 @@ export function PublishingSettings({
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="series-pick" className="mono-label block">
+          <label htmlFor="series-pick" className="ui-label block">
             อยู่ในซีรีส์
           </label>
           <select
@@ -133,7 +133,7 @@ export function PublishingSettings({
         </div>
 
         <div>
-          <label htmlFor="series-position" className="mono-label block">
+          <label htmlFor="series-position" className="ui-label block">
             ลำดับในซีรีส์
           </label>
           <input
@@ -153,7 +153,7 @@ export function PublishingSettings({
 
       {/* The schedule, stated - set where the checklist gates it. */}
       <div className="mt-5 border-t border-hairline pt-4">
-        <p className="mono-label">ตั้งเวลาเผยแพร่</p>
+        <p className="ui-label">ตั้งเวลาเผยแพร่</p>
         {scheduled ? (
           <p className="mt-2 flex items-start gap-2 text-sm text-text-secondary">
             <Icon name="clock" size={15} className="mt-0.5 shrink-0 text-primary" />

@@ -33,7 +33,6 @@ interface Preset {
   key: string;
   label: string;
   title: string;
-  subLabel: string;
   description: string;
   query: Record<string, string>;
 }
@@ -43,7 +42,6 @@ const PRESETS: Preset[] = [
     key: "popular",
     label: "ยอดนิยม",
     title: "ยอดนิยมตอนนี้",
-    subLabel: "Most bookmarked",
     description: "เรียงตามจำนวนคนที่บันทึกเรื่องไว้ในคลัง",
     query: { sort: "popular" },
   },
@@ -51,7 +49,6 @@ const PRESETS: Preset[] = [
     key: "updated",
     label: "อัปเดตล่าสุด",
     title: "อัปเดตล่าสุด",
-    subLabel: "Just updated",
     description: "เรื่องที่เพิ่งมีตอนใหม่หรือเพิ่งถูกแก้ไข",
     query: { sort: "updated" },
   },
@@ -59,7 +56,6 @@ const PRESETS: Preset[] = [
     key: "latest",
     label: "มาใหม่",
     title: "เรื่องมาใหม่",
-    subLabel: "Newest fiction",
     description: "เรื่องที่เพิ่งเริ่มเผยแพร่บนแพลตฟอร์ม",
     query: { sort: "latest" },
   },
@@ -67,7 +63,6 @@ const PRESETS: Preset[] = [
     key: "completed",
     label: "จบแล้ว",
     title: "จบแล้ว อ่านรวดเดียว",
-    subLabel: "Complete",
     description: "เรื่องที่เขียนจบแล้ว อ่านต่อเนื่องได้จนจบโดยไม่ต้องรอ",
     query: { status: "completed", sort: "popular" },
   },
@@ -75,7 +70,6 @@ const PRESETS: Preset[] = [
     key: "oneshot",
     label: "จบในตอน",
     title: "จบในตอนเดียว",
-    subLabel: "One-shots",
     description: "เรื่องสั้นที่อ่านจบได้ในครั้งเดียว",
     query: { story_structure: "one_shot", sort: "popular" },
   },
@@ -87,7 +81,6 @@ const PRESETS: Preset[] = [
     key: "standard",
     label: "ร้อยแก้ว",
     title: "ร้อยแก้ว",
-    subLabel: "Prose",
     description: "เรื่องที่เล่าด้วยการบรรยายแบบร้อยแก้ว",
     query: { presentation_format: "standard", sort: "updated" },
   },
@@ -95,7 +88,6 @@ const PRESETS: Preset[] = [
     key: "chat",
     label: "แชทล้วน",
     title: "แชทฟิก",
-    subLabel: "Chat fiction",
     description: "เรื่องที่เล่าผ่านบทสนทนา",
     query: { presentation_format: "chat", sort: "updated" },
   },
@@ -103,7 +95,6 @@ const PRESETS: Preset[] = [
     key: "headcanon",
     label: "เฮดแคนอน",
     title: "เฮดแคนอน",
-    subLabel: "Headcanon",
     description: "งานเขียนที่ผู้เขียนจัดเป็นเฮดแคนอน",
     query: { content_mode: "headcanon", sort: "updated" },
   },
@@ -184,8 +175,7 @@ export default async function NovelsListPage({
         </nav>
 
         <header className="border-b border-hairline pb-6">
-          <p className="mono-label">{preset.subLabel}</p>
-          <h1 className="mt-2 font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
+          <h1 className="font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
             {author ? `ผลงานของ ${author}` : preset.title}
           </h1>
           <p className="mt-2 max-w-prose text-sm text-text-secondary">

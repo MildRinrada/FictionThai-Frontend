@@ -69,7 +69,7 @@ export default async function StudioNovelCommunityPage({
       <SectionHeader
         title={
           total > 0
-            ? `โพสต์ชุมชนที่พูดถึงเรื่องนี้ · ${count(total)}`
+            ? `โพสต์ชุมชนที่พูดถึงเรื่องนี้ (${count(total)})`
             : "โพสต์ชุมชนที่พูดถึงเรื่องนี้"
         }
       />

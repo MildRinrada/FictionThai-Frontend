@@ -39,7 +39,7 @@ export function AiUsagePanel() {
       aria-label="โควตาการวิเคราะห์ต่อวัน"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <p className="mono-label flex items-center gap-1.5">
+      <p className="ui-label flex items-center gap-1.5">
         <Icon name="clock" size={14} />
         โควตาการวิเคราะห์ต่อวัน
       </p>
@@ -61,7 +61,7 @@ export function AiUsagePanel() {
           />
         </div>
         <p className="shrink-0 text-xs text-text-secondary tabular-nums">
-          ใช้ไป {usage.used}/{usage.daily_quota} · เหลือ {usage.remaining}
+          ใช้ไป {usage.used}/{usage.daily_quota} (เหลือ {usage.remaining})
         </p>
       </div>
       <p className="mt-1.5 text-xs text-text-muted">

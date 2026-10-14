@@ -94,7 +94,7 @@ export function FollowingTab({
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <h2 className="text-sm font-medium">{title}</h2>
               <span className="text-xs text-text-muted">{count(rows.length)} คน</span>
-              {hint ? <span className="text-xs text-text-muted">· {hint}</span> : null}
+              {hint ? <span className="text-xs text-text-muted">{hint}</span> : null}
             </div>
             <ol className="mt-2 flex flex-col gap-2">
               {rows.map((entry) => (
@@ -111,14 +111,14 @@ export function FollowingTab({
                       >
                         {entry.author.display_name || entry.author.username}
                       </Link>
-                      <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-text-secondary">
+                      <p className="mt-0.5 flex flex-wrap items-center gap-x-3 text-xs text-text-secondary">
                         {entry.last_published_at ? (
                           <span>ลงตอนใหม่{relativeTime(entry.last_published_at)}</span>
                         ) : (
                           <span className="text-text-muted">ยังไม่มีตอนที่เผยแพร่</span>
                         )}
                         {entry.writing_count > 0 ? (
-                          <span>· กำลังเขียน {count(entry.writing_count)} เรื่อง</span>
+                          <span>กำลังเขียน {count(entry.writing_count)} เรื่อง</span>
                         ) : null}
                       </p>
                     </div>

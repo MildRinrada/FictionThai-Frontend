@@ -65,7 +65,7 @@ export function AdSlot({
     >
       {/* The label is the placeholder: when a creative mounts it covers this,
           and until then the box says honestly what the space is for. */}
-      <span className="mono-label text-text-muted">โฆษณา</span>
+      <span className="ui-label text-text-muted">โฆษณา</span>
     </div>
   );
 }

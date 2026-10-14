@@ -114,7 +114,7 @@ export function ReadingTab({
       >
         {suggestions.length > 0 ? (
           <div className="mt-4 w-full">
-            <p className="mono-label mb-3 text-start">ลองเริ่มจากเรื่องเหล่านี้</p>
+            <p className="ui-label mb-3 text-start">ลองเริ่มจากเรื่องเหล่านี้</p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               {suggestions.slice(0, 4).map((novel) => (
                 <NovelCoverCard key={novel.id} novel={novel} />
@@ -143,7 +143,7 @@ export function ReadingTab({
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <h2 className="text-sm font-medium">{title}</h2>
               <span className="text-xs text-text-muted">{count(rows.length)} เรื่อง</span>
-              {hint ? <span className="text-xs text-text-muted">· {hint}</span> : null}
+              {hint ? <span className="text-xs text-text-muted">{hint}</span> : null}
               {key === "stale" ? (
                 <button
                   type="button"
@@ -238,7 +238,7 @@ function ReadingCard({
 
         <p className="mt-1.5 text-xs text-text-secondary">
           {chapter
-            ? `อ่านค้างที่: ตอนที่ ${count(chapter.chapter_number)}${chapter.title ? ` · ${chapter.title}` : ""}`
+            ? `อ่านค้างที่: ตอนที่ ${count(chapter.chapter_number)}${chapter.title ? ` ${chapter.title}` : ""}`
             : "ตอนที่ค้างไว้ถูกถอนออกไปแล้ว - เริ่มจากหน้าเรื่องได้"}
           <span className="ms-2 text-text-muted">{relativeTime(entry.last_read_at)}</span>
         </p>

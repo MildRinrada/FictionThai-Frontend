@@ -171,7 +171,7 @@ describe("LibraryView", () => {
   it("the reading card carries the resume line, the real bar, and THE badge", () => {
     render(<LibraryView initialTab="reading" data={data({ reading: [readingEntry()] })} />);
 
-    expect(screen.getByText(/อ่านค้างที่: ตอนที่ 2 · บทที่ฝนตก/)).toBeInTheDocument();
+    expect(screen.getByText(/อ่านค้างที่: ตอนที่ 2 บทที่ฝนตก/)).toBeInTheDocument();
     expect(screen.getByText("เหลืออีก 6 ตอน")).toBeInTheDocument();
     expect(
       screen.getByText(/มี 3 ตอนใหม่หลังจากที่คุณอ่านค้างไว้/),

@@ -103,7 +103,7 @@ export function FinishedTab({
     }
     const top = [...formats.entries()].sort((a, b) => b[1] - a[1])[0];
     const chapters = inYear.reduce((sum, entry) => sum + entry.novel.chapter_count, 0);
-    return `ปีนี้อ่านจบ ${count(inYear.length)} เรื่อง · ${count(chapters)} ตอน · อ่าน${top[0]}บ่อยสุด`;
+    return `ปีนี้อ่านจบ ${count(inYear.length)} เรื่อง รวม ${count(chapters)} ตอน อ่าน${top[0]}บ่อยสุด`;
   }, [entries]);
 
   if (entries.length === 0) {

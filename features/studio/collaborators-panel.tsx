@@ -220,9 +220,11 @@ export function CollaboratorsPanel({
                   <span className="block truncate text-sm font-medium group-hover:text-primary">
                     {person.display_name ?? person.username}
                   </span>
-                  <span className="block truncate text-xs text-text-muted">
-                    @{person.username}
-                    {person.credit ? ` · เครดิต: ${person.credit}` : ""}
+                  <span className="flex flex-wrap gap-x-3 text-xs text-text-muted">
+                    <span className="min-w-0 truncate">@{person.username}</span>
+                    {person.credit ? (
+                      <span className="min-w-0 truncate">เครดิต: {person.credit}</span>
+                    ) : null}
                   </span>
                 </span>
               </a>

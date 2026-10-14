@@ -145,10 +145,14 @@ export function SubscriptionManager({ initialPlan = "" }: { initialPlan?: string
           ) : null}
         </div>
         {sub ? (
-          <p className="mt-2 text-sm text-text-secondary">
-            สถานะ: <span className="font-medium">{sub.status}</span>
+          <p className="mt-2 flex flex-wrap gap-x-3 text-sm text-text-secondary">
+            <span>
+              สถานะ: <span className="font-medium">{sub.status}</span>
+            </span>
             {sub.current_period_end ? (
-              <> · ใช้ได้ถึง {new Date(sub.current_period_end).toLocaleDateString("th-TH")}</>
+              <span>
+                ใช้ได้ถึง {new Date(sub.current_period_end).toLocaleDateString("th-TH")}
+              </span>
             ) : null}
           </p>
         ) : null}

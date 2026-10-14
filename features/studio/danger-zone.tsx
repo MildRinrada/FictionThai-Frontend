@@ -73,7 +73,7 @@ export function DangerZone({
       aria-labelledby="danger-heading"
       className="rounded-lg border border-error/25 p-4"
     >
-      <p id="danger-heading" className="mono-label flex items-center gap-1.5 text-error">
+      <p id="danger-heading" className="ui-label flex items-center gap-1.5 text-error">
         <Icon name="alert" size={14} />
         โซนอันตราย
       </p>

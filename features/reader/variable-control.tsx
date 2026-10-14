@@ -54,7 +54,7 @@ export function VariableControl({
       aria-labelledby={`vars-${novelID}-heading`}
       className="rounded-lg border border-primary-200 bg-primary-50 p-4"
     >
-      <p id={`vars-${novelID}-heading`} className="mono-label flex items-center gap-1.5">
+      <p id={`vars-${novelID}-heading`} className="ui-label flex items-center gap-1.5">
         <Icon name="user" size={13} />
         เรื่องนี้ให้คุณเติมชื่อเองได้
       </p>

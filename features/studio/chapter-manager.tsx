@@ -460,7 +460,7 @@ export function ChapterManager({
           className="mb-7 rounded-lg border border-primary-200 bg-primary-50 p-4"
         >
           <div className="flex items-center justify-between gap-3">
-            <p className="mono-label">เพิ่มตอนใหม่</p>
+            <p className="ui-label">เพิ่มตอนใหม่</p>
             {chapters.length > 0 ? (
               <button
                 type="button"
@@ -523,7 +523,7 @@ export function ChapterManager({
 
           <div className="mt-3 flex flex-wrap items-end gap-2.5">
             <div className="min-w-0 flex-1">
-              <label htmlFor="new-chapter-title" className="mono-label block">
+              <label htmlFor="new-chapter-title" className="ui-label block">
                 ชื่อตอน
               </label>
               <input
@@ -575,7 +575,7 @@ export function ChapterManager({
 
           {editingNumber ? (
             <div className="mt-2">
-              <label htmlFor="new-chapter-number" className="mono-label block">
+              <label htmlFor="new-chapter-number" className="ui-label block">
                 เลขตอน
               </label>
               <input
@@ -883,19 +883,17 @@ export function ChapterManager({
                         >
                           {displayTitle}
                         </span>
-                        <span className="mt-0.5 block truncate text-xs text-text-muted">
-                          {/* One fixed shape: โหมด · ปริมาณ · เวลา (13X). */}
-                          {chapterFormatLabel(chapter.active_format)}
-                          {" · "}
-                          {quantity ?? "ยังไม่มีเนื้อหา"}
-                          {" · แก้ไข "}
-                          {relativeTime(chapter.updated_at)}
-                          {isPublished && chapter.published_at
-                            ? ` · เผยแพร่ ${relativeTime(chapter.published_at)}`
-                            : ""}
-                          {chapter.status === "scheduled" && chapter.scheduled_at
-                            ? ` · จะเผยแพร่ ${scheduleLabel(chapter.scheduled_at)}`
-                            : ""}
+                        <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+                          {/* One fixed shape: โหมด, ปริมาณ, เวลา (13X). */}
+                          <span>{chapterFormatLabel(chapter.active_format)}</span>
+                          <span>{quantity ?? "ยังไม่มีเนื้อหา"}</span>
+                          <span>แก้ไข {relativeTime(chapter.updated_at)}</span>
+                          {isPublished && chapter.published_at ? (
+                            <span>เผยแพร่ {relativeTime(chapter.published_at)}</span>
+                          ) : null}
+                          {chapter.status === "scheduled" && chapter.scheduled_at ? (
+                            <span>จะเผยแพร่ {scheduleLabel(chapter.scheduled_at)}</span>
+                          ) : null}
                         </span>
                       </Link>
                     )}
@@ -1134,10 +1132,10 @@ export function ChapterManager({
                                 <span className="text-warning">
                                   พบ {precheck.result.issue_count} จุดที่ควรดู:
                                   {" "}คำผิด {precheck.result.spell_count}
-                                  {" · "}ตัวละครอาจหลุด{" "}
+                                  {", "}ตัวละครอาจหลุด{" "}
                                   {precheck.result.character.issues.length}
                                   {precheck.result.continuity.checked
-                                    ? ` · ความต่อเนื่อง ${precheck.result.continuity.issues.length}`
+                                    ? `, ความต่อเนื่อง ${precheck.result.continuity.issues.length}`
                                     : ""}
                                 </span>{" "}
                                 <Link

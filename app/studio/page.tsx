@@ -109,7 +109,7 @@ export default async function StudioIndexPage() {
         {coWriting.length > 0 ? (
           <section className="mt-10">
             <h2 className="mb-4 font-serif text-xl font-semibold tracking-tight">
-              เรื่องที่คุณเขียนร่วม · {count(coWriting.length)}
+              เรื่องที่คุณเขียนร่วม ({count(coWriting.length)})
             </h2>
             <ul className="grid gap-3 sm:grid-cols-2">
               {coWriting.map((novel) => (
@@ -147,12 +147,11 @@ function StudioCard({ novel, note }: { novel: Novel; note?: string }) {
           {novel.title}
         </span>
 
-        <span className="mt-1 block text-xs text-text-muted">
-          {note ? `${note} · ` : ""}
-          {STATUS_LABELS[novel.status] ?? novel.status}
-          {" · "}
-          เผยแพร่แล้ว {count(published)} ตอน
-          {drafts ? ` · ร่าง ${count(drafts)}` : ""}
+        <span className="mt-1 flex flex-wrap gap-x-3 text-xs text-text-muted">
+          {note ? <span>{note}</span> : null}
+          <span>{STATUS_LABELS[novel.status] ?? novel.status}</span>
+          <span>เผยแพร่แล้ว {count(published)} ตอน</span>
+          {drafts ? <span>ร่าง {count(drafts)}</span> : null}
         </span>
 
         <span className="mt-2.5 block">

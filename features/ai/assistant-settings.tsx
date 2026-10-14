@@ -40,7 +40,7 @@ import type { AiLexicon, AiPrefs, AiPrefsView } from "@/types/ai";
  *
  * A character named "จงหลี่ (Zhongli)" seeds the bank with the full name and
  * its parts, so the raw list showed the same person twice with parentheses
- * echoing themselves. One entry per identity: "จงหลี่ · Zhongli", and a pair
+ * echoing themselves. One entry per identity: "จงหลี่ (Zhongli)", and a pair
  * whose halves are the same word collapses to the word.
  */
 export function groupAutoTerms(auto: string[]): string[] {
@@ -54,7 +54,7 @@ export function groupAutoTerms(auto: string[]): string[] {
       const name = match[1].trim();
       const alias = match[2].trim();
       grouped.push(
-        name.toLowerCase() === alias.toLowerCase() ? name : `${name} · ${alias}`,
+        name.toLowerCase() === alias.toLowerCase() ? name : `${name} (${alias})`,
       );
       covered.add(name.toLowerCase());
       covered.add(alias.toLowerCase());
@@ -198,7 +198,7 @@ export function AssistantSettings({ novelRef }: { novelRef?: string }) {
       className="scroll-mt-24 rounded-lg border border-border bg-surface p-4"
     >
       <div className="flex flex-wrap items-center gap-2">
-        <p className="mono-label">เครื่องมือช่วยเขียน</p>
+        <p className="ui-label">เครื่องมือช่วยเขียน</p>
         {savedFlash ? (
           <span
             role="status"
@@ -310,7 +310,7 @@ export function AssistantSettings({ novelRef }: { novelRef?: string }) {
 
       {novelRef && lexicon ? (
         <div className="mt-4 border-t border-hairline pt-3">
-          <p className="mono-label">คลังคำของเรื่อง</p>
+          <p className="ui-label">คลังคำของเรื่อง</p>
           <p className="mt-1 text-xs text-text-secondary">
             คำที่อยู่ในคลังจะไม่ถูกเตือนว่าสะกดผิด -
             ชื่อตัวละคร ตัวแปรผู้อ่าน แฟนด้อม และแท็ก ถูกเพิ่มให้อัตโนมัติ

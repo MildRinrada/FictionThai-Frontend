@@ -33,21 +33,21 @@ const MIN_WRITERS = 3;
 
 const KIND_COPY: Record<
   SpotlightKind,
-  { title: string; subLabel: string; empty: string }
+  { title: string; description: string; empty: string }
 > = {
   rising: {
     title: "นักเขียนมาแรงเดือนนี้",
-    subLabel: "On the rise · จากยอดเพิ่มเข้าชั้นหนังสือ ไม่ใช่ยอดวิว · สลับเกณฑ์ทุกสัปดาห์",
+    description: "นับจากยอดเพิ่มเข้าชั้นหนังสือ ไม่ใช่ยอดวิว และสลับเกณฑ์ทุกสัปดาห์",
     empty: "กำลังมาแรง",
   },
   newcomer: {
     title: "นักเขียนหน้าใหม่น่าจับตา",
-    subLabel: "New voices · เริ่มเผยแพร่ใน 90 วันที่ผ่านมา · สลับเกณฑ์ทุกสัปดาห์",
+    description: "เริ่มเผยแพร่ใน 90 วันที่ผ่านมา และสลับเกณฑ์ทุกสัปดาห์",
     empty: "นักเขียนหน้าใหม่",
   },
   consistent: {
     title: "นักเขียนที่ลงตอนสม่ำเสมอ",
-    subLabel: "Steady updates · มีตอนใหม่ต่อเนื่องหลายสัปดาห์ · สลับเกณฑ์ทุกสัปดาห์",
+    description: "มีตอนใหม่ต่อเนื่องหลายสัปดาห์ และสลับเกณฑ์ทุกสัปดาห์",
     empty: "ลงตอนสม่ำเสมอ",
   },
 };
@@ -78,7 +78,7 @@ export function WriterSpotlight({
       <SectionHeader
         id="writers-heading"
         title={copy.title}
-        subLabel={copy.subLabel}
+        description={copy.description}
       />
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         {spotlight.writers.slice(0, 6).map((writer) => (
@@ -131,7 +131,7 @@ export function WriterSpotlight({
         ))}
       </ul>
       <p className="mt-3 text-xs text-text-muted">
-        ตัวเลขแสดงเป็นช่วงเสมอ · นักเขียนเลือกไม่แสดงชื่อในอันดับได้ที่{" "}
+        ตัวเลขแสดงเป็นช่วงเสมอ นักเขียนเลือกไม่แสดงชื่อในอันดับได้ที่{" "}
         <Link href="/settings/profile" className="text-primary hover:underline">
           ตั้งค่าโปรไฟล์
         </Link>

@@ -149,10 +149,9 @@ export function ReaderChrome({
             <span className="hidden sm:inline">หน้าเรื่อง</span>
           </Link>
 
-          <p className="min-w-0 flex-1 truncate text-sm text-reader-muted">
-            <span className="text-reader-text">{novelTitle}</span>
-            <span aria-hidden="true"> · </span>
-            {chapterLabel}
+          <p className="flex min-w-0 flex-1 items-baseline gap-x-3 text-sm text-reader-muted">
+            <span className="max-w-[60%] min-w-0 truncate text-reader-text">{novelTitle}</span>
+            <span className="min-w-0 truncate">{chapterLabel}</span>
           </p>
 
           <div ref={settingsRef} className="relative flex shrink-0 items-center gap-1">
@@ -423,7 +422,7 @@ function PillButton({
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="mb-4 last:mb-0">
-      <p className="mono-label mb-2">{label}</p>
+      <p className="ui-label mb-2">{label}</p>
       {children}
     </div>
   );

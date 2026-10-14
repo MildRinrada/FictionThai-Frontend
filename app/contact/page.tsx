@@ -60,8 +60,7 @@ export default function ContactPage() {
         </nav>
 
         <header className="border-b border-hairline pb-6">
-          <p className="mono-label">Contact</p>
-          <h1 className="mt-2 font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
+          <h1 className="font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
             ติดต่อทีมงาน
           </h1>
           <p className="mt-2.5 max-w-prose text-sm leading-relaxed text-text-secondary">
@@ -96,7 +95,7 @@ export default function ContactPage() {
 
           <aside className="flex flex-col gap-4">
             <section className="rounded-lg border border-border bg-surface p-5">
-              <p className="mono-label">ช่องทางอีเมล</p>
+              <p className="ui-label">ช่องทางอีเมล</p>
               {email ? (
                 <>
                   <a
@@ -119,7 +118,7 @@ export default function ContactPage() {
             </section>
 
             <section className="rounded-lg border border-border bg-surface p-5">
-              <p className="mono-label">สิ่งที่ควรรู้</p>
+              <p className="ui-label">สิ่งที่ควรรู้</p>
               <ul className="mt-3 flex flex-col gap-2.5 text-xs leading-relaxed text-text-secondary">
                 <li>ทีมงานไม่เข้าถึงหรือแก้ไขงานเขียนของคุณโดยไม่ได้รับอนุญาต</li>
                 <li>รายงานเนื้อหาจะถูกตรวจโดยผู้ดูแล ไม่ใช่ระบบอัตโนมัติเพียงอย่างเดียว</li>

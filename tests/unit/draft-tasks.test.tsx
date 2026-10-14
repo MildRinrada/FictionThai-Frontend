@@ -99,11 +99,11 @@ describe("DraftTasks", () => {
       draft({ title: "เปลือกเปล่า" }),
     ]);
 
-    expect(screen.getByText(/ร่างว่าง · 1 ตอน/)).toBeInTheDocument();
+    expect(screen.getByText(/ร่างว่าง 1 ตอน/)).toBeInTheDocument();
     // Collapsed: the empty draft's row is not shown until expanded.
     expect(screen.queryByText("เปลือกเปล่า")).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: /ร่างว่าง · / }));
+    fireEvent.click(screen.getByRole("button", { name: /^ร่างว่าง \d/ }));
     expect(screen.getByText("เปลือกเปล่า")).toBeInTheDocument();
   });
 
@@ -111,7 +111,7 @@ describe("DraftTasks", () => {
     deleteChapter.mockResolvedValue(undefined);
     renderTasks([draft({ title: "ทิ้งได้", slug: "empty-one" })]);
 
-    fireEvent.click(screen.getByRole("button", { name: /ร่างว่าง · / }));
+    fireEvent.click(screen.getByRole("button", { name: /^ร่างว่าง \d/ }));
     fireEvent.click(screen.getByRole("button", { name: /^ลบ ทิ้งได้$/ }));
     // Nothing deleted yet - the row swapped to a confirmation.
     expect(deleteChapter).not.toHaveBeenCalled();

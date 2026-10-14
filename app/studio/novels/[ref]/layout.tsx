@@ -66,16 +66,13 @@ export default async function StudioNovelLayout({
           className="w-14 shrink-0"
           editHref={`/studio/novels/${encodeURIComponent(novel.slug)}/settings#identity`}
         />
-        <div className="min-w-0">
-          <p className="mono-label">สตูดิโอของเรื่อง</p>
-          <div className="mt-1">
-            <EditableTitle
-              novelRef={novel.slug}
-              title={novel.title}
-              as="p"
-              className="font-serif text-sm font-semibold"
-            />
-          </div>
+        <div className="min-w-0 self-center">
+          <EditableTitle
+            novelRef={novel.slug}
+            title={novel.title}
+            as="p"
+            className="font-serif text-sm font-semibold"
+          />
         </div>
       </div>
 

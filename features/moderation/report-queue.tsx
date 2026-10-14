@@ -151,7 +151,7 @@ export function ReportQueue() {
             ← ก่อนหน้า
           </button>
           <span className="text-text-muted">
-            หน้า {page} · ทั้งหมด {total} รายการ
+            หน้า {page} (ทั้งหมด {total} รายการ)
           </span>
           <button
             type="button"

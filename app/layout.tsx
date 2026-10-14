@@ -18,7 +18,7 @@ import { EggWatcher } from "@/features/achievements/egg-watcher";
  * eliminates the layout shift a late-arriving webfont would cause.
  *
  * Sans is the UI face; serif carries titles, headings, and the reading surface;
- * mono is the structural voice used only for micro-labels and counts.
+ * mono is used only for tabular counts and @handles.
  */
 const notoSansThai = Noto_Sans_Thai({
   variable: "--font-noto-sans-thai",
@@ -33,9 +33,9 @@ const notoSerifThai = Noto_Serif_Thai({
 });
 
 /*
- * Mono appears at 10px in tracked-out uppercase labels and in tabular counts -
- * never in body copy. It therefore needs latin only (Thai never renders in it)
- * and two weights, which keeps it a small download.
+ * Mono appears only in counts and @handles - never in body copy or labels. It
+ * therefore needs latin only (Thai never renders in it) and two weights, which
+ * keeps it a small download.
  */
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(env.appUrl),
   title: {
     default: "FictionThai",
-    template: "%s · FictionThai",
+    template: "%s - FictionThai",
   },
   description:
     "แพลตฟอร์มนิยายไทยสำหรับนักเขียนและนักอ่าน - อ่านได้ทันทีโดยไม่ต้องสมัครสมาชิก",

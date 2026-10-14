@@ -236,7 +236,7 @@ export function NovelSettings({
 
           <div className="min-w-56 flex-1 space-y-4">
             <div>
-              <label htmlFor="novel-title" className="mono-label block">
+              <label htmlFor="novel-title" className="ui-label block">
                 ชื่อเรื่อง
               </label>
               <input
@@ -250,7 +250,7 @@ export function NovelSettings({
             </div>
 
             <div>
-              <label htmlFor="novel-tagline" className="mono-label block">
+              <label htmlFor="novel-tagline" className="ui-label block">
                 คำโปรย
               </label>
               <p className="mt-1 text-xs text-text-muted">
@@ -288,7 +288,7 @@ export function NovelSettings({
         </p>
 
         <div className="mt-4">
-          <label htmlFor="novel-description" className="mono-label block">
+          <label htmlFor="novel-description" className="ui-label block">
             เรื่องย่อ
           </label>
           <textarea
@@ -301,12 +301,12 @@ export function NovelSettings({
         </div>
 
         <div className="mt-4">
-          <label htmlFor="novel-foreword" className="mono-label block">
+          <label htmlFor="novel-foreword" className="ui-label block">
             บทนำ
           </label>
           <p className="mt-1 text-xs text-text-muted">
             สิ่งที่อยากบอกผู้อ่านก่อนเริ่มเรื่อง - คำเตือน คำขอบคุณ ที่มาของเรื่อง
-            หรือ AU นี้ต่างจากต้นฉบับตรงไหน · ผู้อ่านเปิดดูได้จากแท็บของตัวเอง ไม่ปนกับตอนที่ 1
+            หรือ AU นี้ต่างจากต้นฉบับตรงไหน (ผู้อ่านเปิดดูได้จากแท็บของตัวเอง ไม่ปนกับตอนที่ 1)
           </p>
           <textarea
             id="novel-foreword"
@@ -318,7 +318,7 @@ export function NovelSettings({
         </div>
 
         <div className="mt-4">
-          <label htmlFor="novel-content-warning" className="mono-label block">
+          <label htmlFor="novel-content-warning" className="ui-label block">
             คำเตือนเนื้อหา
           </label>
           <p className="mt-1 text-xs text-text-muted">
@@ -350,7 +350,7 @@ export function NovelSettings({
             other choice on this page is a card, and the rating is the choice
             with legal weight - it must not be the least visible one. */}
         <fieldset className="mt-6">
-          <legend className="mono-label">เรตอายุ</legend>
+          <legend className="ui-label">เรตอายุ</legend>
           <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
             {[
               { value: AgeRating.General, label: "ทั่วไป", hint: "อ่านได้ทุกวัย" },
@@ -412,7 +412,7 @@ export function NovelSettings({
         {/* The writer's own gate - protection against reach (§13B). */}
         {isAdultRating(rating) ? (
           <fieldset className="mt-5">
-            <legend className="mono-label">ใครเปิดอ่านเรื่อง 18+ นี้ได้</legend>
+            <legend className="ui-label">ใครเปิดอ่านเรื่อง 18+ นี้ได้</legend>
             <div className="mt-2 space-y-2">
               {gateChoicesFor(rating).map((choice) => (
                 <label key={choice.value} className="flex items-start gap-2 text-sm">
@@ -435,7 +435,7 @@ export function NovelSettings({
         ) : null}
 
         <fieldset className="mt-6">
-          <legend className="mono-label">ต้นฉบับ</legend>
+          <legend className="ui-label">ต้นฉบับ</legend>
           <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
             {[
               {
@@ -477,7 +477,7 @@ export function NovelSettings({
 
         {origin === OriginType.Fanfiction ? (
           <div className="mt-4">
-            <label htmlFor="novel-fandom" className="mono-label block">
+            <label htmlFor="novel-fandom" className="ui-label block">
               เขียนจากเรื่องอะไร (เรื่องต้นทาง)
             </label>
             <p className="mt-1 text-xs text-text-muted">
@@ -503,7 +503,7 @@ export function NovelSettings({
         <BlockHeading title="การมองเห็นและสถานะ" autosave={audienceSave} />
 
         <fieldset className="mt-4">
-          <legend className="mono-label">ใครเห็นเรื่องนี้ได้</legend>
+          <legend className="ui-label">ใครเห็นเรื่องนี้ได้</legend>
           {/* THE visibility control - the only one on this page (review B1).
               The เผยแพร่/ส่วนตัว toggle that duplicated it is gone. */}
           <div className="mt-2.5 flex flex-col gap-2">
@@ -532,7 +532,7 @@ export function NovelSettings({
         </fieldset>
 
         <div className="mt-5">
-          <label htmlFor="novel-status" className="mono-label block">
+          <label htmlFor="novel-status" className="ui-label block">
             สถานะการเขียน
           </label>
           <select
@@ -551,7 +551,7 @@ export function NovelSettings({
 
         {/* คอมเมนต์ - three levels, not a checkbox (§13D). */}
         <fieldset className="mt-6 border-t border-hairline pt-5">
-          <legend className="mono-label">ใครคอมเมนต์ได้</legend>
+          <legend className="ui-label">ใครคอมเมนต์ได้</legend>
           <div className="mt-2.5 flex flex-col gap-2">
             {COMMENT_ACCESS_CHOICES.map((option) => (
               <label
@@ -611,7 +611,7 @@ export function NovelSettings({
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <fieldset>
-            <legend className="mono-label">โครงสร้างเรื่อง</legend>
+            <legend className="ui-label">โครงสร้างเรื่อง</legend>
             <div className="mt-2.5 flex flex-col gap-1.5">
               {[
                 { value: StoryStructure.MultiChapter, label: "หลายตอน", disabled: false },
@@ -661,7 +661,7 @@ export function NovelSettings({
               Headcanon ล้วน sets the content classification with it - the
               third column that asked the same thing again is gone. */}
           <fieldset>
-            <legend className="mono-label">รูปแบบเริ่มต้นของตอน</legend>
+            <legend className="ui-label">รูปแบบเริ่มต้นของตอน</legend>
             <div className="mt-2.5 flex flex-col gap-1.5">
               {[
                 { value: WorkFormat.Prose, label: "ร้อยแก้ว" },

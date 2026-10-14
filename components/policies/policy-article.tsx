@@ -25,13 +25,17 @@ export function PolicyArticle({ doc }: { doc: PolicyDoc }) {
     <div className="min-w-0">
       {/* Meta bar */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-hairline pb-3">
-        <span className="inline-flex min-h-6 items-center rounded-sm border border-primary-200 bg-surface-secondary px-2 font-mono text-[10.5px] text-primary">
+        <span className="inline-flex min-h-6 items-center rounded-sm border border-primary-200 bg-surface-secondary px-2 text-xs text-primary">
           ฉบับ {doc.version}
         </span>
         <span className="text-xs text-text-muted">
-          มีผลเมื่อ <PlaceholderInline hint="วันที่มีผล" /> · แก้ไขล่าสุด{" "}
-          <PlaceholderInline hint="วันที่แก้ไข" /> · อ่านประมาณ{" "}
-          <PlaceholderInline hint="X นาที" />
+          มีผลเมื่อ <PlaceholderInline hint="วันที่มีผล" />
+        </span>
+        <span className="text-xs text-text-muted">
+          แก้ไขล่าสุด <PlaceholderInline hint="วันที่แก้ไข" />
+        </span>
+        <span className="text-xs text-text-muted">
+          อ่านประมาณ <PlaceholderInline hint="X นาที" />
         </span>
         <span className="ms-auto flex items-center gap-2 print:hidden">
           <button
@@ -48,8 +52,7 @@ export function PolicyArticle({ doc }: { doc: PolicyDoc }) {
       </div>
 
       {/* Title */}
-      <p className="mono-label mt-5">{doc.kicker}</p>
-      <h1 className="mt-1.5 font-serif text-[27px] leading-[1.3] font-semibold tracking-tight text-pretty sm:text-[33px]">
+      <h1 className="mt-5 font-serif text-[27px] leading-[1.3] font-semibold tracking-tight text-pretty sm:text-[33px]">
         {doc.title}
       </h1>
       <div className="mt-3 max-w-prose">
@@ -63,7 +66,7 @@ export function PolicyArticle({ doc }: { doc: PolicyDoc }) {
         aria-labelledby="policy-tldr"
         className="mt-6 max-w-prose rounded-lg border border-primary-200 bg-surface-secondary p-4"
       >
-        <p id="policy-tldr" className="mono-label mb-3 text-primary">
+        <p id="policy-tldr" className="ui-label mb-3 text-primary">
           สรุปสั้น ๆ ก่อนอ่านฉบับเต็ม
         </p>
         <ul className="flex flex-col gap-2">
@@ -162,20 +165,20 @@ export function PolicyArticle({ doc }: { doc: PolicyDoc }) {
           href={`/policies/${prev.slug}`}
           className="block rounded-lg border border-border bg-surface p-3.5 hover:border-primary-200 hover:bg-surface-secondary"
         >
-          <span className="mono-label block text-[9px]">ก่อนหน้า</span>
+          <span className="ui-label block">ก่อนหน้า</span>
           <span className="mt-1 block text-sm font-medium">{prev.title}</span>
         </Link>
         <Link
           href={`/policies/${next.slug}`}
           className="block rounded-lg border border-border bg-surface p-3.5 text-end hover:border-primary-200 hover:bg-surface-secondary"
         >
-          <span className="mono-label block text-[9px]">ถัดไป</span>
+          <span className="ui-label block">ถัดไป</span>
           <span className="mt-1 block text-sm font-medium">{next.title}</span>
         </Link>
       </nav>
 
       <p className="mt-5 max-w-prose text-xs leading-relaxed text-text-muted">
-        เอกสารทุกฉบับในหน้านี้เขียนเป็นภาษาไทยและใช้ฉบับภาษาไทยเป็นฉบับหลัก ·
+        เอกสารทุกฉบับในหน้านี้เขียนเป็นภาษาไทยและใช้ฉบับภาษาไทยเป็นฉบับหลัก
         เมื่อมีการแก้ไขที่กระทบสิทธิของผู้ใช้อย่างมีนัยสำคัญ
         ระบบจะแจ้งบนหน้าเว็บล่วงหน้าและขอให้ยอมรับอีกครั้งก่อนวันที่มีผล
       </p>

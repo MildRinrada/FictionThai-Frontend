@@ -18,8 +18,7 @@ export default function CommunityGuidelinesPage() {
     <main id="main">
       <PageContainer className="py-10 pb-16">
         <header className="border-b border-hairline pb-6">
-          <p className="mono-label">Community Guidelines</p>
-          <h1 className="mt-2 font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
+          <h1 className="font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
             แนวปฏิบัติของชุมชน
           </h1>
           <p className="mt-2 max-w-prose text-sm text-text-secondary">

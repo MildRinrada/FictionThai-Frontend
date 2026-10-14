@@ -707,7 +707,7 @@ function AllItemRow({
         </div>
         {onShelves.length > 0 ? (
           <p className="mt-1 line-clamp-1 text-[11px] text-text-muted">
-            อยู่ในชั้น: {onShelves.map((shelf) => shelf.name).join(" · ")}
+            อยู่ในชั้น: {onShelves.map((shelf) => shelf.name).join(", ")}
           </p>
         ) : null}
       </div>

@@ -10,7 +10,7 @@ export function RulesCard() {
       aria-labelledby="community-rules-heading"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <h2 id="community-rules-heading" className="mono-label">
+      <h2 id="community-rules-heading" className="ui-label">
         กติกาชุมชน
       </h2>
 

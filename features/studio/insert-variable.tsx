@@ -79,7 +79,7 @@ export function InsertVariable({
                   {index > 0 && variable.options?.forms?.[index] ? (
                     <span className="text-text-muted">
                       {" "}
-                      · {variable.options.forms[index]}
+                      ({variable.options.forms[index]})
                     </span>
                   ) : null}
                 </span>

@@ -135,7 +135,8 @@ function draftOf(character: Character): Draft {
 
 /** The chapter-picker label: the number alone tells a writer nothing (#14). */
 function chapterLabel(chapter: ChapterSummary): string {
-  return `${chapter.chapter_number} · ${chapter.title || `ตอนที่ ${chapter.chapter_number}`}`;
+  const number = `ตอนที่ ${chapter.chapter_number}`;
+  return chapter.title ? `${number} ${chapter.title}` : number;
 }
 
 /** A reader cannot see this chapter yet - say so instead of styling it alike. */
@@ -331,7 +332,7 @@ export function CharacterManager({
         onSubmit={onCreate}
         className="mb-6 rounded-lg border border-primary-200 bg-primary-50 p-4"
       >
-        <label htmlFor="new-character" className="mono-label block">
+        <label htmlFor="new-character" className="ui-label block">
           เพิ่มตัวละคร
         </label>
         <div className="mt-2.5 flex flex-wrap gap-2.5">
@@ -681,12 +682,15 @@ function CharacterRow({
           <span className="block truncate font-serif text-base font-semibold">
             {character.name}
           </span>
-          <span className="mt-0.5 block truncate text-xs text-text-muted">
-            {character.role || "ยังไม่ได้ระบุบทบาท"}
-            {" · "}
-            {appearsIn.size > 0
-              ? `ปรากฏ ${appearsIn.size} ตอน`
-              : "ยังไม่ได้เลือกตอนที่ปรากฏ"}
+          <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+            <span className="min-w-0 truncate">
+              {character.role || "ยังไม่ได้ระบุบทบาท"}
+            </span>
+            <span>
+              {appearsIn.size > 0
+                ? `ปรากฏ ${appearsIn.size} ตอน`
+                : "ยังไม่ได้เลือกตอนที่ปรากฏ"}
+            </span>
           </span>
         </span>
 
@@ -780,7 +784,7 @@ function CharacterRow({
             <Field
               label="บทบาท"
               value={draft.role}
-              placeholder="เช่น ตัวละครหลัก · ผู้เล่าเรื่อง"
+              placeholder="เช่น ตัวละครหลัก, ผู้เล่าเรื่อง"
               maxLength={LIMIT.role}
               onChange={(value) => mutate({ ...draft, role: value }, details)}
             />
@@ -800,12 +804,12 @@ function CharacterRow({
             open={moreOpen}
             onToggle={(event) => setMoreOpen(event.currentTarget.open)}
           >
-            <summary className="mono-label cursor-pointer select-none text-text-secondary hover:text-text">
+            <summary className="ui-label cursor-pointer select-none text-text-secondary hover:text-text">
               รายละเอียดเพิ่มเติม
             </summary>
 
             <div className="mt-3">
-              <label className="mono-label block" htmlFor={`desc-${character.id}`}>
+              <label className="ui-label block" htmlFor={`desc-${character.id}`}>
                 ภูมิหลัง
               </label>
               <textarea
@@ -841,7 +845,7 @@ function CharacterRow({
             />
 
             <fieldset className="mt-4">
-              <legend className="mono-label">ข้อมูลเพิ่มเติม</legend>
+              <legend className="ui-label">ข้อมูลเพิ่มเติม</legend>
               <p className="mt-1 mb-2 text-xs text-text-secondary">
                 ตั้งชื่อหัวข้อเองได้ทั้งหมด - ไม่มีชุดฟิลด์ตายตัว
               </p>
@@ -952,7 +956,7 @@ function CharacterRow({
 
           {chapters.length > 0 ? (
             <fieldset className="mt-4">
-              <legend className="mono-label">ปรากฏในตอน</legend>
+              <legend className="ui-label">ปรากฏในตอน</legend>
               <p className="mt-1 mb-2 text-xs text-text-secondary">
                 เรียงตามลำดับตอน - ใช้เป็นไทม์ไลน์ของตัวละครนี้
               </p>
@@ -1063,7 +1067,7 @@ function AppearanceTimeline({
 }) {
   return (
     <section aria-labelledby="timeline-heading" className="mt-8">
-      <h2 id="timeline-heading" className="mono-label">
+      <h2 id="timeline-heading" className="ui-label">
         ไทม์ไลน์การปรากฏ
       </h2>
       <p className="mt-1 mb-3 text-xs text-text-secondary">
@@ -1160,7 +1164,7 @@ function Field({
   const id = `field-${label}`;
   return (
     <div className={className}>
-      <label className="mono-label block" htmlFor={id}>
+      <label className="ui-label block" htmlFor={id}>
         {label}
       </label>
       <input

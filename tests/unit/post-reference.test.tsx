@@ -83,7 +83,7 @@ describe("where a reference points", () => {
 describe("what a reference card says", () => {
   it("names the fiction and the chapter", () => {
     expect(referenceTitle(chapterReference())).toBe(
-      "ปลายฝนที่ท่าน้ำเก่า · ตอนที่ 7 น้ำขึ้นตอนตีสาม",
+      "ปลายฝนที่ท่าน้ำเก่า ตอนที่ 7 น้ำขึ้นตอนตีสาม",
     );
   });
 
@@ -93,7 +93,7 @@ describe("what a reference card says", () => {
 
   it("keeps an untitled chapter untitled", () => {
     const title = referenceTitle(chapterReference({ chapter_title: null }));
-    expect(title).toBe("ปลายฝนที่ท่าน้ำเก่า · ตอนที่ 7");
+    expect(title).toBe("ปลายฝนที่ท่าน้ำเก่า ตอนที่ 7");
   });
 
   it("states the format, the length, and an approximate reading time", () => {

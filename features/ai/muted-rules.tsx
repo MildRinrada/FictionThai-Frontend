@@ -64,7 +64,7 @@ export function MutedRules() {
       aria-label="กฎที่ปิดไว้"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <p className="mono-label">กฎที่ปิดไว้</p>
+      <p className="ui-label">กฎที่ปิดไว้</p>
       <p className="mt-1 text-xs text-text-secondary">
         ทุกครั้งที่กด “ไม่เตือนแบบนี้อีก” ในหน้าเขียน รายการจะมาอยู่ที่นี่ -
         เปิดกลับได้ทุกเมื่อ

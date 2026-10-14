@@ -86,9 +86,9 @@ export function CommentQueue({ novelRef }: { novelRef: string }) {
       aria-labelledby="comment-queue-heading"
       className="rounded-lg border border-warning/30 bg-warning/8 p-4"
     >
-      <p id="comment-queue-heading" className="mono-label flex items-center gap-1.5">
+      <p id="comment-queue-heading" className="ui-label flex items-center gap-1.5">
         <Icon name="message" size={14} />
-        รอคุณตรวจ · {total}
+        รอคุณตรวจ ({total})
       </p>
 
       <p className="mt-2 text-[13px] leading-relaxed text-text-secondary">

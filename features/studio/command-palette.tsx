@@ -162,7 +162,7 @@ export function CommandPalette({ novelRef }: { novelRef: string }) {
                     <span className="flex items-center gap-2 text-xs text-text-secondary">
                       <span className="font-medium text-text">
                         ตอนที่ {hit.chapter_number}
-                        {hit.title ? ` · ${hit.title}` : ""}
+                        {hit.title ? ` ${hit.title}` : ""}
                       </span>
                       <span>{WHERE_LABEL[hit.where] ?? hit.where}</span>
                       {hit.status !== "published" ? (

@@ -357,7 +357,7 @@ export function CreateNovelForm({
 
   const warningText = [...state.warningChips, state.warningCustom.trim()]
     .filter(Boolean)
-    .join(" · ");
+    .join(", ");
   const showRatedBlock = state.rating !== "" && state.rating !== AgeRating.General;
 
   // What the button still waits for (create review 2026-08 item 6): an
@@ -551,7 +551,7 @@ export function CreateNovelForm({
             </button>
           ) : (
             <span className="mt-1 block text-center text-[10px] text-text-muted">
-              A5 · ไม่บังคับ
+              A5 (ไม่บังคับ)
             </span>
           )}
         </div>
@@ -586,7 +586,7 @@ export function CreateNovelForm({
             <label htmlFor="tagline" className="block text-sm font-medium">
               คำโปรย{" "}
               <span className="font-normal text-text-muted">
-                · ไม่บังคับ - หนึ่งบรรทัดใต้ปกในหน้ารวม
+                (ไม่บังคับ) - หนึ่งบรรทัดใต้ปกในหน้ารวม
               </span>
             </label>
             <input
@@ -609,7 +609,7 @@ export function CreateNovelForm({
           <div>
             <label htmlFor="description" className="block text-sm font-medium">
               เรื่องย่อ{" "}
-              <span className="font-normal text-text-muted">· ไม่บังคับ</span>
+              <span className="font-normal text-text-muted">(ไม่บังคับ)</span>
             </label>
             <textarea
               id="description"
@@ -933,7 +933,7 @@ export function CreateNovelForm({
 
       {missing.length > 0 ? (
         <p className="text-center text-xs text-text-muted">
-          ยังขาด: {missing.join(" · ")}
+          ยังขาด: {missing.join(", ")}
         </p>
       ) : null}
       <Button

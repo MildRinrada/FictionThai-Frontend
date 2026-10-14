@@ -29,13 +29,13 @@ export function PlaceholderBlock({ slot }: { slot: PolicySlot }) {
         note ? "border-s-2" : ""
       }`}
     >
-      <p className="mono-label text-[9px] text-primary">
-        ต้องเขียนเอง · {KIND_LABELS[slot.kind]}
+      <p className="ui-label text-primary">
+        ต้องเขียนเอง: {KIND_LABELS[slot.kind]}
       </p>
       <p className="mt-1.5 text-[13px] leading-relaxed text-text-secondary">
         {slot.hint}
       </p>
-      <p className="mt-1.5 font-mono text-[10.5px] text-text-muted">
+      <p className="mt-1.5 text-xs text-text-muted">
         ความยาวโดยประมาณ: {slot.length}
       </p>
     </div>

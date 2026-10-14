@@ -45,10 +45,10 @@ export function WritingNowPanel({
               >
                 {novel.title}
               </Link>
-              <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-muted">
+              <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-text-muted">
                 <span className="tabular-nums">{count(novel.chapter_count)} ตอน</span>
                 {novel.updated_at ? (
-                  <span>· อัปเดตล่าสุด {relativeTime(novel.updated_at)}</span>
+                  <span>อัปเดตล่าสุด {relativeTime(novel.updated_at)}</span>
                 ) : null}
               </p>
             </div>

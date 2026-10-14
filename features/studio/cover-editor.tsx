@@ -349,10 +349,10 @@ function CoverModal({
             */}
             <ul className="mt-2 space-y-0.5 text-xs text-text-secondary">
               <li>
-                · ขนาดมาตรฐาน A5 ที่ 300 DPI - {OUTPUT_WIDTH}×{OUTPUT_HEIGHT} พิกเซล
+                ขนาดมาตรฐาน A5 ที่ 300 DPI - {OUTPUT_WIDTH}×{OUTPUT_HEIGHT} พิกเซล
               </li>
-              <li>· ไฟล์ JPEG, PNG หรือ WebP ขนาดไม่เกิน 5 MB</li>
-              <li>· ตัวหนังสือบนปกอย่าชิดขอบ การ์ดบางที่ตัดขอบเล็กน้อย</li>
+              <li>ไฟล์ JPEG, PNG หรือ WebP ขนาดไม่เกิน 5 MB</li>
+              <li>ตัวหนังสือบนปกอย่าชิดขอบ การ์ดบางที่ตัดขอบเล็กน้อย</li>
             </ul>
           </div>
           <button

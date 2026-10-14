@@ -87,8 +87,9 @@ export function CreateMenu({
               <Icon name="edit" size={16} className="mt-0.5 shrink-0 text-primary" />
               <span className="min-w-0">
                 <span className="block font-medium">เขียนต่อจากที่ค้าง</span>
-                <span className="mt-0.5 block truncate text-[11px] text-text-muted">
-                  {resume.chapter_label} · {relativeTime(resume.updated_at)}
+                <span className="mt-0.5 flex min-w-0 gap-x-2 text-[11px] text-text-muted">
+                  <span className="min-w-0 truncate">{resume.chapter_label}</span>
+                  <span className="shrink-0">{relativeTime(resume.updated_at)}</span>
                 </span>
               </span>
             </Link>
@@ -106,7 +107,7 @@ export function CreateMenu({
 
           {recent.length > 0 ? (
             <>
-              <p className="mono-label border-t border-hairline px-3.5 pt-2.5 pb-1 text-text-muted">
+              <p className="ui-label border-t border-hairline px-3.5 pt-2.5 pb-1 text-text-muted">
                 เพิ่มตอนในเรื่องที่ค้างอยู่
               </p>
               <ul className="pb-1">

@@ -175,7 +175,7 @@ export function HistoryTab({
                             className="text-xs text-text-secondary hover:text-primary"
                           >
                             ตอนที่ {count(entry.chapter.chapter_number)}
-                            {entry.chapter.title ? ` · ${entry.chapter.title}` : ""}
+                            {entry.chapter.title ? ` ${entry.chapter.title}` : ""}
                           </Link>
                         ) : null}
                       </span>

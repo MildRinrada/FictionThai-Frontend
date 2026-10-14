@@ -88,7 +88,7 @@ export function LibraryView({
     [],
   );
 
-  // One toast for the whole page: "ทำแล้ว · เลิกทำ", 6 seconds.
+  // One toast for the whole page: "ทำแล้ว" plus a เลิกทำ button, 6 seconds.
   const [toast, setToast] = useState<{ message: string; undo?: () => void } | null>(null);
   const toastTimer = useRef<number | null>(null);
   const notify = useCallback((message: string, undo?: () => void) => {
@@ -124,18 +124,16 @@ export function LibraryView({
         <h1 className="font-serif text-2xl font-semibold tracking-tight">
           ชั้นหนังสือของฉัน
         </h1>
-        <p className="flex flex-wrap items-center gap-x-1 text-sm text-text-secondary">
-          {stats.map((stat, index) => (
-            <span key={stat.key} className="flex items-center gap-1">
-              {index > 0 ? <span aria-hidden>·</span> : null}
-              <button
-                type="button"
-                onClick={() => open(stat.key)}
-                className="rounded px-1 py-0.5 tabular-nums hover:bg-surface-secondary hover:text-text"
-              >
-                {stat.label}
-              </button>
-            </span>
+        <p className="flex flex-wrap items-center gap-x-3 text-sm text-text-secondary">
+          {stats.map((stat) => (
+            <button
+              key={stat.key}
+              type="button"
+              onClick={() => open(stat.key)}
+              className="rounded px-1 py-0.5 tabular-nums hover:bg-surface-secondary hover:text-text"
+            >
+              {stat.label}
+            </button>
           ))}
         </p>
       </header>

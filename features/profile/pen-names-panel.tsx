@@ -184,7 +184,7 @@ export function PenNamesPanel({
       >
         <div className="flex flex-wrap gap-2.5">
           <div className="min-w-40 flex-1">
-            <label htmlFor="new-pen-name" className="mono-label block">
+            <label htmlFor="new-pen-name" className="ui-label block">
               นามปากกา
             </label>
             <input
@@ -197,7 +197,7 @@ export function PenNamesPanel({
             />
           </div>
           <div className="min-w-40 flex-1">
-            <label htmlFor="new-pen-note" className="mono-label block">
+            <label htmlFor="new-pen-note" className="ui-label block">
               โน้ต
             </label>
             <input
@@ -205,7 +205,7 @@ export function PenNamesPanel({
               value={note}
               onChange={(event) => setNote(event.target.value)}
               maxLength={LIMIT.note}
-              placeholder="เช่น แยกแนว · ร่วมเขียน"
+              placeholder="เช่น แยกแนว, ร่วมเขียน"
               className="mt-1.5 min-h-10 w-full rounded-md border border-border bg-surface px-3 text-sm outline-none focus:border-primary"
             />
           </div>
@@ -302,7 +302,7 @@ function PenNameRow({
       {editing ? (
         <div className="flex flex-wrap items-end gap-2.5">
           <div className="min-w-40 flex-1">
-            <label htmlFor={`pen-name-${penName.id}`} className="mono-label block">
+            <label htmlFor={`pen-name-${penName.id}`} className="ui-label block">
               ชื่อนามปากกา
             </label>
             <input
@@ -314,7 +314,7 @@ function PenNameRow({
             />
           </div>
           <div className="min-w-40 flex-1">
-            <label htmlFor={`pen-note-${penName.id}`} className="mono-label block">
+            <label htmlFor={`pen-note-${penName.id}`} className="ui-label block">
               โน้ตของชื่อนี้
             </label>
             <input

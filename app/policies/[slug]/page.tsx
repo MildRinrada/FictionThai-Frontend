@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const doc = policyDoc(slug);
   if (!doc) return {};
   return {
-    title: `${doc.title} · ข้อกำหนดและนโยบาย`,
+    title: `${doc.title} (ข้อกำหนดและนโยบาย)`,
     description: "ศูนย์ข้อกำหนดและนโยบายของ FictionThai",
     robots: { index: false },
   };
@@ -68,7 +68,7 @@ export default async function PolicyPage({ params }: PageProps) {
         {/* Mobile TOC - a native disclosure, no JavaScript. */}
         <details className="mb-5 rounded-lg border border-border bg-surface p-3 lg:hidden">
           <summary className="cursor-pointer text-sm font-medium">
-            สารบัญเอกสาร · {doc.title}
+            สารบัญเอกสาร ({doc.title})
           </summary>
           <div className="mt-3 flex flex-col gap-3.5">
             <PolicyTocList current={doc} />
@@ -78,8 +78,7 @@ export default async function PolicyPage({ params }: PageProps) {
 
         <div className="gap-10 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)]">
           <aside className="hidden lg:sticky lg:top-20 lg:block lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto lg:pb-4">
-            <p className="mono-label">Policies</p>
-            <p className="mt-1.5 mb-4 font-serif text-lg leading-snug font-semibold">
+            <p className="mb-4 font-serif text-lg leading-snug font-semibold">
               ข้อกำหนดและนโยบาย
             </p>
             <PolicyTocList current={doc} />

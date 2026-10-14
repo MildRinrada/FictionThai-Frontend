@@ -222,7 +222,7 @@ export default async function NovelPage({ params }: PageProps) {
                 {publishedWords > 0 ? (
                   <Stat
                     label="ความยาว"
-                    value={`${count(publishedWords)} คำ · ~${count(readingMinutes(publishedWords))} นาที`}
+                    value={`${count(publishedWords)} คำ อ่านราว ${count(readingMinutes(publishedWords))} นาที`}
                   />
                 ) : null}
                 <Stat label="อัปเดตล่าสุด" value={relativeTime(novel.updated_at)} />
@@ -317,7 +317,6 @@ export default async function NovelPage({ params }: PageProps) {
                   ? {
                       key: "synopsis",
                       label: "เรื่องย่อ",
-                      subLabel: "Synopsis",
                       text: novel.description,
                     }
                   : null,
@@ -325,7 +324,6 @@ export default async function NovelPage({ params }: PageProps) {
                   ? {
                       key: "foreword",
                       label: "บทนำ",
-                      subLabel: "Foreword",
                       text: novel.foreword,
                     }
                   : null,
@@ -333,7 +331,6 @@ export default async function NovelPage({ params }: PageProps) {
                   ? {
                       key: "note",
                       label: "จากผู้เขียน",
-                      subLabel: "Author note",
                       text: novel.author_note_start,
                     }
                   : null,
@@ -391,7 +388,7 @@ export default async function NovelPage({ params }: PageProps) {
 
             {alsoBy.length > 0 ? (
               <section aria-labelledby="also-by-heading">
-                <p id="also-by-heading" className="mono-label mb-3">
+                <p id="also-by-heading" className="ui-label mb-3">
                   เรื่องอื่นของนักเขียนคนนี้
                 </p>
                 <ul className="grid grid-cols-2 gap-x-3 gap-y-5">
@@ -413,7 +410,7 @@ export default async function NovelPage({ params }: PageProps) {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="mono-label">{label}</dt>
+      <dt className="ui-label">{label}</dt>
       <dd className="mt-1 text-sm">{value}</dd>
     </div>
   );
@@ -429,7 +426,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 function OwnerStrip({ novel }: { novel: Novel }) {
   return (
     <div className="mt-6 flex flex-wrap items-center gap-2.5 rounded-lg border border-primary-200 bg-primary-50 px-4 py-3">
-      <p className="mono-label me-2">มุมมองเจ้าของเรื่อง</p>
+      <p className="ui-label me-2">มุมมองเจ้าของเรื่อง</p>
       <Link
         href={`/studio/novels/${encodeURIComponent(novel.slug)}`}
         className="inline-flex min-h-9 items-center rounded-md bg-primary px-3.5 text-sm font-medium text-white hover:opacity-90"
@@ -453,7 +450,7 @@ function AuthorCard({ novel }: { novel: Novel }) {
       aria-labelledby="author-card-heading"
       className="rounded-xl border border-border bg-surface p-4"
     >
-      <p id="author-card-heading" className="mono-label">
+      <p id="author-card-heading" className="ui-label">
         นักเขียน
       </p>
       <div className="mt-3 flex items-center gap-3">
@@ -509,7 +506,7 @@ function ChapterList({ novel, chapters }: { novel: Novel; chapters: ChapterSumma
       <SectionHeader
         id="chapter-list-heading"
         title="สารบัญ"
-        subLabel={`${count(chapters.length)} chapters`}
+        description={`${count(chapters.length)} ${novel.chapter_unit?.trim() || "ตอน"}`}
       />
 
       <ol className="divide-y divide-hairline rounded-lg border border-border bg-surface">
@@ -529,7 +526,7 @@ function ChapterList({ novel, chapters }: { novel: Novel; chapters: ChapterSumma
                 </span>
                 {chapter.word_count > 0 ? (
                   <span className="mt-0.5 block text-xs text-text-muted">
-                    {count(chapter.word_count)} คำ · ~{readingMinutes(chapter.word_count)} นาที
+                    {count(chapter.word_count)} คำ อ่านราว {readingMinutes(chapter.word_count)} นาที
                   </span>
                 ) : null}
               </span>

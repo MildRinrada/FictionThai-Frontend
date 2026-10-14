@@ -21,7 +21,7 @@ export function PinnedShelf({ pinned }: { pinned: PinnedWork[] }) {
 
   return (
     <section aria-labelledby="pinned-heading" className="mb-6">
-      <p id="pinned-heading" className="mono-label flex items-center gap-1.5">
+      <p id="pinned-heading" className="ui-label flex items-center gap-1.5">
         <Icon name="pin" size={13} />
         เริ่มที่เรื่องนี้
       </p>

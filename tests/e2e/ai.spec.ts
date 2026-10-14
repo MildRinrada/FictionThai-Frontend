@@ -142,7 +142,7 @@ test.describe("ai journey", () => {
     expect((await summaryDone).status()).toBe(202); // queued, not completed inline
 
     // The worker completes it and the UI, which polls, shows the summary.
-    await expect(page.getByText("AI · สรุปเนื้อหา")).toBeVisible({ timeout: 30_000 });
+    await expect(page.getByText("สรุปเนื้อหา (AI)")).toBeVisible({ timeout: 30_000 });
     await expect(page.getByTestId("ai-request-status")).toHaveText("เสร็จแล้ว");
   });
 });

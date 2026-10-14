@@ -115,7 +115,7 @@ export function DraftTasks({
           id="draft-tasks-heading"
           className="font-serif text-xl font-semibold tracking-tight"
         >
-          ทำต่อจากที่ค้างไว้ · {count(alive.length)}
+          ทำต่อจากที่ค้างไว้ ({count(alive.length)})
         </h2>
         <Link
           href={`${base}/chapters`}
@@ -153,12 +153,13 @@ export function DraftTasks({
                   </span>
                   <LocalDraftBadge novelRef={novelRef} chapterSlug={chapter.slug} />
                 </span>
-                <span className="mt-0.5 block text-xs text-text-muted">
-                  {chapter.word_count > 0
-                    ? `${count(chapter.word_count)} คำ`
-                    : "มีเนื้อหาแล้ว"}
-                  {" · แก้ไข "}
-                  {relativeTime(chapter.updated_at)}
+                <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+                  <span>
+                    {chapter.word_count > 0
+                      ? `${count(chapter.word_count)} คำ`
+                      : "มีเนื้อหาแล้ว"}
+                  </span>
+                  <span>แก้ไข {relativeTime(chapter.updated_at)}</span>
                 </span>
               </span>
               <Link
@@ -187,7 +188,7 @@ export function DraftTasks({
               className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-text"
             >
               <Icon name={emptyOpen ? "chevron-up" : "chevron-down"} size={14} />
-              ร่างว่าง · {count(empty.length)} ตอน
+              ร่างว่าง {count(empty.length)} ตอน
               <span className="text-xs text-text-muted">(ยังไม่มีเนื้อหา)</span>
             </button>
 

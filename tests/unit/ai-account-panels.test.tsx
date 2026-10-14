@@ -95,7 +95,7 @@ describe("AiUsagePanel", () => {
     getAiUsage.mockResolvedValue({ limited: true, daily_quota: 10, used: 3, remaining: 7 });
     render(<AiUsagePanel />);
     await waitFor(() =>
-      expect(screen.getByText(/ใช้ไป 3\/10 · เหลือ 7/)).toBeInTheDocument(),
+      expect(screen.getByText(/ใช้ไป 3\/10 \(เหลือ 7\)/)).toBeInTheDocument(),
     );
   });
 

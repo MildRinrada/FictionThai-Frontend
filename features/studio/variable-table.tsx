@@ -161,7 +161,7 @@ export function VariableTable({
       {/* The presets, each SAYING what it is (review item C): "(l/n)" alone
           was a code only people who already knew the genre could read. */}
       <div className="mt-4">
-        <p className="mono-label">เพิ่มแบบสำเร็จรูป</p>
+        <p className="ui-label">เพิ่มแบบสำเร็จรูป</p>
         <div className="mt-2 flex flex-wrap gap-1.5">
           {VARIABLE_PRESETS.map((preset) => (
             <button

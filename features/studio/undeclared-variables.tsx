@@ -99,7 +99,7 @@ export function UndeclaredVariables({
       id="undeclared-variables"
       className="scroll-mt-24 rounded-lg border border-warning/30 bg-warning/8 p-4"
     >
-      <p className="mono-label flex items-center gap-1.5">
+      <p className="ui-label flex items-center gap-1.5">
         <Icon name="alert" size={14} />
         ตัวแปรที่ยังไม่ประกาศ
       </p>

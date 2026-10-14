@@ -654,7 +654,7 @@ export function WritingTools({
       className="rounded-lg border border-border bg-surface p-4"
     >
       <div className="flex items-center justify-between gap-2">
-        <p className="mono-label">เครื่องมือช่วยเขียน</p>
+        <p className="ui-label">เครื่องมือช่วยเขียน</p>
         <span aria-live="polite" className={`text-xs font-medium ${status.tone}`}>
           {status.label}
         </span>
@@ -689,7 +689,7 @@ export function WritingTools({
           {/* ตรวจทาน - per-family rows, each with its OWN switch right here
               (novel-tier prefs), so turning one tool on or off never requires
               leaving the editor or silencing everything. */}
-          <p className="mono-label mt-4">ตรวจทาน</p>
+          <p className="ui-label mt-4">ตรวจทาน</p>
           <ul className="mt-2 flex flex-col gap-1.5 text-[13px]">
             <ToolRow
               dotClass="bg-error"
@@ -914,18 +914,17 @@ export function WritingTools({
                     </Link>
                   </>
                 ) : (
-                  <p className="text-text-secondary">
-                    ตรวจได้ {characterResult.checkable} จาก {characterResult.total} ตัวละคร
+                  <p className="flex flex-wrap gap-x-3 text-text-secondary">
+                    <span>
+                      ตรวจได้ {characterResult.checkable} จาก {characterResult.total} ตัวละคร
+                    </span>
                     {characterResult.skipped.some((s) => s.reason.includes("เพิ่มนิสัย")) ? (
-                      <>
-                        {" · "}
-                        <Link
-                          href={`/studio/novels/${encodeURIComponent(novelRef)}/characters`}
-                          className="text-primary hover:underline"
-                        >
-                          เพิ่มข้อมูลเพื่อให้ตรวจได้แม่นขึ้น
-                        </Link>
-                      </>
+                      <Link
+                        href={`/studio/novels/${encodeURIComponent(novelRef)}/characters`}
+                        className="text-primary hover:underline"
+                      >
+                        เพิ่มข้อมูลเพื่อให้ตรวจได้แม่นขึ้น
+                      </Link>
                     ) : null}
                   </p>
                 )}

@@ -61,6 +61,6 @@ describe("tallyLine", () => {
     // skimmed beside a Thai chapter count.
     expect(
       tallyLine({ total: 12, published: 8, scheduled: 1, drafts: 2, unpublished: 1 }),
-    ).toBe("เผยแพร่แล้ว 8 ตอน · ตั้งเวลาไว้ 1 · ร่าง 2 · ถอนจากเผยแพร่ 1");
+    ).toBe("เผยแพร่แล้ว 8 ตอน, ตั้งเวลาไว้ 1, ร่าง 2, ถอนจากเผยแพร่ 1");
   });
 });

@@ -44,7 +44,7 @@ export function RightsCard({ rights, authorName }: RightsCardProps) {
       aria-labelledby="rights-heading"
       className="rounded-lg border border-border bg-surface-secondary p-4"
     >
-      <p id="rights-heading" className="mono-label flex items-center gap-1.5">
+      <p id="rights-heading" className="ui-label flex items-center gap-1.5">
         <Icon name="flag" size={13} />
         {authorName} อนุญาตว่า
       </p>

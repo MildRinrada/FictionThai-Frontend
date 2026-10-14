@@ -68,8 +68,7 @@ export default function FormatsPage() {
         </nav>
 
         <header className="border-b border-hairline pb-6">
-          <p className="mono-label">Formats</p>
-          <h1 className="mt-2 font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
+          <h1 className="font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
             คู่มือรูปแบบการนำเสนอ
           </h1>
           <p className="mt-2.5 max-w-prose text-sm leading-relaxed text-text-secondary">

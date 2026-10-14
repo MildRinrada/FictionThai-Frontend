@@ -16,7 +16,7 @@ export function WordsToday({ words }: { words: number }) {
 
   return (
     <span
-      className="hidden font-mono text-[11px] text-text-muted tabular-nums lg:inline"
+      className="hidden text-xs text-text-muted tabular-nums lg:inline"
       title="จำนวนคำที่เขียนเพิ่มวันนี้"
     >
       วันนี้ {words.toLocaleString("th-TH")} คำ

@@ -167,9 +167,9 @@ export function ReportDetailView({ reportId }: { reportId: string }) {
         {report.description ? (
           <p className="mt-2 whitespace-pre-wrap text-sm text-text">{report.description}</p>
         ) : null}
-        <p className="mt-3 text-xs text-text-secondary">
-          รายงานโดย @{report.reporter.username}
-          {report.resolver ? ` · ปิดโดย @${report.resolver.username}` : ""}
+        <p className="mt-3 flex flex-wrap gap-x-3 text-xs text-text-secondary">
+          <span>รายงานโดย @{report.reporter.username}</span>
+          {report.resolver ? <span>ปิดโดย @{report.resolver.username}</span> : null}
         </p>
 
         {open ? (
@@ -217,9 +217,11 @@ export function ReportDetailView({ reportId }: { reportId: string }) {
                 {target.excerpt}
               </blockquote>
             ) : null}
-            <p className="text-xs text-text-secondary">
-              สถานะปัจจุบัน: <span className="font-medium">{target.state}</span>
-              {target.author ? ` · โดย @${target.author.username}` : ""}
+            <p className="flex flex-wrap gap-x-3 text-xs text-text-secondary">
+              <span>
+                สถานะปัจจุบัน: <span className="font-medium">{target.state}</span>
+              </span>
+              {target.author ? <span>โดย @{target.author.username}</span> : null}
             </p>
           </div>
         )}

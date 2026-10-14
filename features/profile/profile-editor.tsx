@@ -209,7 +209,7 @@ export function ProfileEditor({ profile }: { profile: PublicProfile }) {
       <section className="rounded-xl border border-border bg-surface p-5">
         <h2 className="font-serif text-lg font-semibold">อันดับนักเขียน</h2>
         <p className="mt-1 text-sm text-text-secondary">
-          หน้าแรกมีอันดับนักเขียนที่สลับเกณฑ์ทุกสัปดาห์ (มาแรง · หน้าใหม่ ·
+          หน้าแรกมีอันดับนักเขียนที่สลับเกณฑ์ทุกสัปดาห์ (มาแรง, หน้าใหม่,
           ลงตอนสม่ำเสมอ) ตัวเลขแสดงเป็นช่วงเสมอ ไม่มีตัวเลขเป๊ะ ๆ -
           ถ้าไม่อยากให้ชื่อคุณปรากฏ ปิดได้ที่นี่ มีผลกับทุกอันดับ
         </p>
@@ -283,7 +283,7 @@ function Field({
 }) {
   return (
     <label className="mt-4 block">
-      <span className="mono-label">{label}</span>
+      <span className="ui-label">{label}</span>
       {hint ? <span className="mt-1 block text-xs text-text-muted">{hint}</span> : null}
       <span className="mt-2 block">{children}</span>
       {error ? (

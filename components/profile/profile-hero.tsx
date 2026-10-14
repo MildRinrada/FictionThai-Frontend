@@ -87,11 +87,7 @@ export function ProfileHero({
             // reason avatars are plain <img>.
             // eslint-disable-next-line @next/next/no-img-element
             <img src={profile.banner_url} alt="" className="size-full object-cover" />
-          ) : (
-            <p className="mono-label absolute start-5 top-5 text-primary-400">
-              FictionThai · โปรไฟล์
-            </p>
-          )}
+          ) : null}
           {/* The control is a DIRECT child of the band, deliberately. It used
               to sit in an `absolute end-3 top-3` wrapper, which pinned it to
               the top corner - and pinned the whole control to a corner-sized
@@ -134,10 +130,10 @@ export function ProfileHero({
                   {name}
                 </h1>
               )}
-              <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-text-muted">
+              <p className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
                 <span className="font-mono">@{profile.username}</span>
                 {profile.joined_at ? (
-                  <span>· เข้าร่วมเมื่อ {absoluteDate(profile.joined_at)}</span>
+                  <span>เข้าร่วมเมื่อ {absoluteDate(profile.joined_at)}</span>
                 ) : null}
               </p>
 
@@ -145,18 +141,18 @@ export function ProfileHero({
                   there is, how much of it is FINISHED - the number a reader
                   decides by - and who already follows. Zeros stay silent. */}
               {profile.novel_count > 0 || profile.follower_count > 0 ? (
-                <p className="mt-2 flex flex-wrap items-center gap-x-2 text-sm text-text-secondary">
+                <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-text-secondary">
                   {profile.novel_count > 0 ? (
                     <span className="tabular-nums">{count(profile.novel_count)} เรื่อง</span>
                   ) : null}
                   {(profile.completed_count ?? 0) > 0 ? (
                     <span className="font-medium text-text tabular-nums">
-                      · จบแล้ว {count(profile.completed_count ?? 0)} เรื่อง
+                      จบแล้ว {count(profile.completed_count ?? 0)} เรื่อง
                     </span>
                   ) : null}
                   {profile.follower_count > 0 ? (
                     <span className="tabular-nums">
-                      · ผู้ติดตาม {count(profile.follower_count)}
+                      ผู้ติดตาม {count(profile.follower_count)}
                     </span>
                   ) : null}
                 </p>

@@ -579,16 +579,24 @@ body {
 }
 
 /*
- * Editorial micro-label. Mono, tracked out, uppercase - the quiet structural
- * voice that separates FictionThai's sections from the coloured section headers
- * every competitor uses.
+ * Small label: a form field's name, a panel's heading, a metadata term.
+ *
+ * Body face at 13px. It used to be 10px IBM Plex Mono, tracked out and
+ * uppercased - but Plex Mono has no Thai glyphs, so every Thai label fell back
+ * to a system font and then had its letter-spacing pull the vowels and tone
+ * marks away from their consonants. Below ~13px Thai stops being readable.
+ *
+ * In the components layer so a utility on the same element still wins. The old
+ * rule was unlayered and beat every `text-*` beside it, which is how the label
+ * on the dark promo banner came out grey-on-grey.
  */
-.mono-label {
-  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+@layer components {
+  .ui-label {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
 }
 
 /*

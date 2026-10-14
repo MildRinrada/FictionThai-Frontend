@@ -59,8 +59,8 @@ export default async function StudioChaptersPage({
   return (
     <div>
       <SectionHeader
-        title={`ตอนทั้งหมด · ${count(chapters.length)}`}
-        subLabel={
+        title={`ตอนทั้งหมด (${count(chapters.length)})`}
+        description={
           totalWords > 0
             ? `${count(totalWords)} คำ (เผยแพร่แล้ว ${count(publishedWords)})`
             : undefined

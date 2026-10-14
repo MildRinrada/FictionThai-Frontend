@@ -49,11 +49,11 @@ export default async function ProfileSettingsPage() {
       {/* The account-settings tabs: this page and ตั้งค่าผู้ช่วยเขียน are
           siblings of one settings area, and each should say so. */}
       <SettingsNav />
-      <nav className="mono-label mt-5">
+      <nav className="ui-label mt-5 flex flex-wrap gap-x-2">
         <Link href="/profile" className="hover:text-primary">
           โปรไฟล์
         </Link>
-        {" · ตั้งค่า"}
+        <span>ตั้งค่า</span>
       </nav>
       <h1 className="mt-3 font-serif text-2xl font-semibold tracking-tight">
         ตั้งค่าโปรไฟล์

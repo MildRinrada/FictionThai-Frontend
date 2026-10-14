@@ -72,7 +72,7 @@ export function PenNameList({
         <p
           className={`text-sm text-text-muted ${penNames.length > 0 ? "mt-4" : "mt-0"}`}
         >
-          เคยใช้ชื่อ {formerNames.join(" · ")}
+          เคยใช้ชื่อ {formerNames.join(", ")}
           <span className="mt-1 block text-xs">
             แสดงชื่อที่เพิ่งเปลี่ยนไว้ 30 วัน เพื่อให้ผู้อ่านตามเจ้าของผลงานเดิมได้
           </span>

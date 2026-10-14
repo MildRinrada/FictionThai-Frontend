@@ -74,7 +74,7 @@ export function PublishChecklist({
         readiness.ready ? "border-success/30 bg-success/5" : "border-border bg-surface"
       }`}
     >
-      <p id="checklist-heading" className="mono-label flex items-center gap-1.5">
+      <p id="checklist-heading" className="ui-label flex items-center gap-1.5">
         <Icon name={readiness.ready ? "check" : "list"} size={14} />
         ก่อนเผยแพร่
       </p>
@@ -93,7 +93,7 @@ export function PublishChecklist({
 
       {hasAdvice ? (
         <div className="mt-4 border-t border-hairline pt-3">
-          <p className="mono-label text-text-muted">แนะนำเพิ่มเติม · ไม่บังคับ</p>
+          <p className="ui-label text-text-muted">แนะนำเพิ่มเติม (ไม่บังคับ)</p>
           <ul className="mt-2 flex flex-col gap-2">
             {suggested.map((item) => (
               <ChecklistRow key={item.key} item={item} base={base} />

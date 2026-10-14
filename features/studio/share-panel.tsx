@@ -88,7 +88,7 @@ export function SharePanel({
       aria-labelledby="share-heading"
       className="rounded-lg border border-success/30 bg-success/5 p-4"
     >
-      <p id="share-heading" className="mono-label flex items-center gap-1.5">
+      <p id="share-heading" className="ui-label flex items-center gap-1.5">
         <Icon name="check" size={14} />
         เรื่องนี้ออนไลน์แล้ว
       </p>
@@ -155,8 +155,9 @@ export function SharePanel({
               ยังไม่มีคำโปรย - การ์ดจะดึงดูดกว่านี้ถ้ามี
             </span>
           )}
-          <span className="mt-1 block text-[11px] text-text-muted">
-            โดย {authorName} · FictionThai
+          <span className="mt-1 flex flex-wrap gap-x-3 text-[11px] text-text-muted">
+            <span>โดย {authorName}</span>
+            <span>FictionThai</span>
           </span>
         </span>
       </div>

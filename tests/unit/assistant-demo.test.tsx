@@ -62,7 +62,7 @@ describe("AssistantDemo", () => {
 
     await waitFor(() => expect(screen.getByTestId("ai-inline-list")).toBeInTheDocument());
     // The chip is Thai, never the raw "spelling · high".
-    expect(screen.getByText("คำผิด · ควรแก้")).toBeInTheDocument();
+    expect(screen.getByText("คำผิด (ควรแก้)")).toBeInTheDocument();
     expect(screen.queryByText(/spelling/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "ละเว้น" }));

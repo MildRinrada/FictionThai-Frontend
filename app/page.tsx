@@ -175,7 +175,6 @@ export default async function HomePage() {
             <SectionHeader
               id="resume-heading"
               title="อ่านต่อ"
-              subLabel="Continue reading"
               href="/library"
               linkLabel="คลังของฉัน"
             />
@@ -188,7 +187,6 @@ export default async function HomePage() {
             <SectionHeader
               id="resume-heading"
               title="อ่านต่อ"
-              subLabel="Continue reading"
               href="/library"
               linkLabel="คลังของฉัน"
             />
@@ -209,7 +207,7 @@ export default async function HomePage() {
             // The window is stated (review E): this ranking is cumulative
             // bookmarks, not a trending feed - saying "ตอนนี้" over an
             // all-time count was a claim the data does not make.
-            subLabel="Most bookmarked · นับจากบุ๊กมาร์กสะสมทั้งหมด"
+            description="นับจากบุ๊กมาร์กสะสมทั้งหมด"
             href="/novels?preset=popular"
             // The COMPLETE ranking, #1 included, even though #1 also leads the
             // hero (review round 2): a list that starts at 2 read as a missing
@@ -234,7 +232,6 @@ export default async function HomePage() {
                 <SectionHeader
                   id="updated-heading"
                   title="อัปเดตล่าสุด"
-                  subLabel="Recently updated"
                   href="/novels?preset=updated"
                 />
                 <ul className="-mx-2 divide-y divide-hairline">
@@ -252,7 +249,6 @@ export default async function HomePage() {
                 <SectionHeader
                   id="community-heading"
                   title="ในชุมชน"
-                  subLabel="Around the stories"
                   href="/community"
                 />
                 <ul className="flex flex-col gap-3">
@@ -276,7 +272,6 @@ export default async function HomePage() {
           <Shelf
             id="completed"
             title="จบแล้ว อ่านรวดเดียว"
-            subLabel="Complete · binge in one sitting"
             href="/novels?preset=completed"
             novels={completed}
           />
@@ -293,7 +288,6 @@ export default async function HomePage() {
             <SectionHeader
               id="alternative-heading"
               title="แชทฟิกและเฮดแคนอน"
-              subLabel="Chat & headcanon"
               href="/novels?preset=headcanon"
             />
             <ul className="flex snap-x gap-4 overflow-x-auto pb-2">
@@ -314,7 +308,6 @@ export default async function HomePage() {
             <SectionHeader
               id="discover-heading"
               title="ค้นพบเรื่องใหม่"
-              subLabel="Discover · pick a mood"
             />
             <DiscoverQuestions columns={discoverColumns} />
           </section>
@@ -339,7 +332,7 @@ export default async function HomePage() {
  * "อันดับ 1 ยอดนิยม" banner when it does not, so an unstaffed install never
  * shows a hole.
  *
- * RIGHT: the automatic "มาใหม่ · นักเขียนหน้าใหม่" pick. NOT FOR SALE, ever
+ * RIGHT: the automatic นักเขียนหน้าใหม่ pick. NOT FOR SALE, ever
  * (docs/HOME-PROMO.md) - this slot is the counterweight that keeps a writer
  * with no budget reachable on the front page.
  */
@@ -377,14 +370,12 @@ function Hero({
           />
 
           <span className="relative">
-            <span className="mono-label text-white/75">
-              เรื่องเด่น · อันดับ 1 ยอดนิยม
-            </span>
-            <span className="mt-2 block font-serif text-2xl leading-snug font-semibold text-white">
+            <span className="block font-serif text-2xl leading-snug font-semibold text-white">
               {featured.title}
             </span>
-            <span className="mt-1.5 block text-sm text-white/80">
-              โดย {featured.author.display_name ?? featured.author.username}
+            <span className="mt-1.5 flex flex-wrap gap-x-4 text-sm text-white/80">
+              <span>โดย {featured.author.display_name ?? featured.author.username}</span>
+              <span>อันดับ 1 ยอดนิยม</span>
             </span>
             <span className="mt-4 inline-flex min-h-9 items-center rounded-md bg-white px-4 text-sm font-medium text-[#292731] group-hover:bg-white/90">
               เริ่มอ่าน
@@ -410,13 +401,14 @@ function Hero({
             showFallbackLabel={false}
           />
           <span className="flex min-w-0 flex-1 flex-col justify-center">
-            <span className="mono-label text-primary">มาใหม่ · นักเขียนหน้าใหม่</span>
-            <span className="mt-2 block font-serif text-lg leading-snug font-semibold group-hover:text-primary">
+            <span className="block font-serif text-lg leading-snug font-semibold group-hover:text-primary">
               <span className="line-clamp-2">{spotlight.title}</span>
             </span>
             <span className="mt-1.5 block text-sm text-text-secondary">
-              โดย {spotlight.author.display_name ?? spotlight.author.username} -
-              ตามเรื่องตั้งแต่ตอนแรกก่อนใคร
+              โดย {spotlight.author.display_name ?? spotlight.author.username}
+            </span>
+            <span className="mt-1 block text-sm text-text-secondary">
+              นักเขียนหน้าใหม่ - ตามเรื่องตั้งแต่ตอนแรกก่อนใคร
             </span>
             <span className="mt-2.5 block">
               <FormatBadges
@@ -434,8 +426,7 @@ function Hero({
           href={signedIn ? "/studio/novels/new" : "/register"}
           className="group rounded-xl border border-secondary-300 bg-secondary-50 p-5 hover:border-secondary"
         >
-          <p className="mono-label text-secondary-600">สำหรับนักเขียน</p>
-          <p className="mt-2 font-serif text-lg leading-snug font-semibold">
+          <p className="font-serif text-lg leading-snug font-semibold">
             เริ่มเรื่องของคุณวันนี้
           </p>
           <p className="mt-1.5 text-sm text-text-secondary">
@@ -489,7 +480,7 @@ function QuickEntry() {
       aria-label="ทางลัดไปหน้ารวมเรื่อง"
       className="mt-6 flex flex-wrap items-center gap-2"
     >
-      <span className="mono-label me-1 text-text-muted">ไปหน้ารวม:</span>
+      <span className="me-1 text-sm text-text-secondary">ไปหน้ารวม:</span>
       <Chip href="/explore" selected>
         ทุกหมวด
       </Chip>
@@ -505,14 +496,14 @@ function QuickEntry() {
 function Shelf({
   id,
   title,
-  subLabel,
+  description,
   href,
   novels,
   rankFrom,
 }: {
   id: string;
   title: string;
-  subLabel: string;
+  description?: string;
   href: string;
   novels: Novel[];
   /** First card's rank on a ranked shelf; unranked shelves omit it. */
@@ -520,7 +511,12 @@ function Shelf({
 }) {
   return (
     <section aria-labelledby={`${id}-heading`} className="mt-14">
-      <SectionHeader id={`${id}-heading`} title={title} subLabel={subLabel} href={href} />
+      <SectionHeader
+        id={`${id}-heading`}
+        title={title}
+        description={description}
+        href={href}
+      />
       {/* Six columns everywhere (review A2). A short row leaves gaps at the
           end rather than stretching cards to fill - grid does that for free. */}
       <ul className="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 lg:grid-cols-6">
@@ -567,7 +563,7 @@ function ResumeCard({ entry }: { entry: ContinueReadingEntry }) {
           </p>
           <p className="mt-0.5 truncate text-xs text-text-muted">
             {chapter
-              ? `ตอนที่ ${chapter.chapter_number}${chapter.title ? ` · ${chapter.title}` : ""}`
+              ? `ตอนที่ ${chapter.chapter_number}${chapter.title ? ` ${chapter.title}` : ""}`
               : "ตอนที่อ่านค้างไว้ไม่พร้อมให้อ่านแล้ว"}
           </p>
           <p className="mt-0.5 text-xs text-text-muted">
@@ -609,7 +605,7 @@ function ResumeStrip({ entry }: { entry: ContinueReadingEntry }) {
         </span>
         <span className="mt-0.5 block truncate text-xs text-text-muted">
           {chapter
-            ? `ตอนที่ ${chapter.chapter_number}${chapter.title ? ` · ${chapter.title}` : ""}`
+            ? `ตอนที่ ${chapter.chapter_number}${chapter.title ? ` ${chapter.title}` : ""}`
             : "ตอนที่อ่านค้างไว้ไม่พร้อมให้อ่านแล้ว"}
         </span>
       </span>
@@ -677,14 +673,13 @@ function WriterInvitation({
     return (
       <section className="mt-16 flex flex-col items-center gap-6 rounded-xl border border-primary-200 bg-primary-50 px-6 py-8 text-center sm:flex-row sm:text-start">
         <div className="min-w-0 flex-1">
-          <p className="mono-label">เขียนต่อจากที่ค้าง</p>
           {/* The chapter alone (review round 2): title · chapter overflowed
               two lines for any real novel name. The novel gets the line below. */}
-          <h2 className="mt-2.5 truncate font-serif text-xl font-semibold tracking-tight">
+          <h2 className="truncate font-serif text-xl font-semibold tracking-tight">
             {resume.chapter_label} รอคุณอยู่
           </h2>
           <p className="mt-2.5 max-w-lg truncate text-sm leading-relaxed text-text-secondary">
-            จากเรื่อง {resume.novel_title} · แตะล่าสุด {relativeTime(resume.updated_at)}
+            จากเรื่อง {resume.novel_title} (แก้ล่าสุด {relativeTime(resume.updated_at)})
           </p>
         </div>
         <div className="flex shrink-0 flex-col gap-2.5">
@@ -708,8 +703,7 @@ function WriterInvitation({
   return (
     <section className="mt-16 flex flex-col items-center gap-6 rounded-xl border border-primary-200 bg-primary-50 px-6 py-8 text-center sm:flex-row sm:text-start">
       <div className="flex-1">
-        <p className="mono-label">เริ่มเขียนวันนี้</p>
-        <h2 className="mt-2.5 font-serif text-xl font-semibold tracking-tight">
+        <h2 className="font-serif text-xl font-semibold tracking-tight">
           มีเรื่องอยู่ในหัวแล้ว แต่ยังไม่รู้จะเริ่มตรงไหน
         </h2>
         <p className="mt-2.5 max-w-lg text-sm leading-relaxed text-text-secondary">

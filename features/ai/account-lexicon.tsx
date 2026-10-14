@@ -65,7 +65,7 @@ export function AccountLexicon() {
       aria-label="คลังคำทั้งบัญชี"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <p className="mono-label">คลังคำทั้งบัญชี</p>
+      <p className="ui-label">คลังคำทั้งบัญชี</p>
       <p className="mt-1 text-xs text-text-secondary">
         คำในคลังนี้จะไม่ถูกเตือนว่าสะกดผิดในทุกเรื่องที่คุณเขียน -
         เหมาะกับชื่อเฉพาะของแฟนด้อมที่ใช้ซ้ำหลายเรื่อง สอนครั้งเดียวพอ

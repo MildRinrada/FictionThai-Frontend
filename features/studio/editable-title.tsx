@@ -170,7 +170,7 @@ export function EditableTitle({
         className={`w-full rounded-md border border-primary bg-surface px-1 -mx-1 outline-none ${className}`}
       />
       <p className="mt-1 text-xs text-text-muted">
-        {saving ? "กำลังบันทึก…" : "Enter เพื่อบันทึก · Esc เพื่อยกเลิก"}
+        {saving ? "กำลังบันทึก…" : "Enter เพื่อบันทึก, Esc เพื่อยกเลิก"}
       </p>
     </div>
   );

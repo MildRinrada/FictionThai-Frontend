@@ -139,7 +139,7 @@ export function ChatConversionCard({
 
   return (
     <section className="rounded-lg border border-border bg-surface p-4">
-      <p className="mono-label">แปลงเป็นแชทฟิก</p>
+      <p className="ui-label">แปลงเป็นแชทฟิก</p>
       <p className="mt-1.5 text-xs leading-relaxed text-text-muted">
         ระบบแยกบทพูดและระบุผู้พูดจากหลักฐานในต้นฉบับ (กติกาเดียวกับตัวตรวจตัวละคร
         ทำงานในเครื่องนี้) - ต้นฉบับร้อยแก้วไม่ถูกแตะ
@@ -164,16 +164,17 @@ export function ChatConversionCard({
         </button>
       ) : (
         <div className="mt-3">
-          <p className="text-xs text-text-secondary">
-            {count(result.blocks.length)} บล็อก ·{" "}
-            {count(result.blocks.filter((b) => b.type === "dialogue").length)} บทพูด
+          <p className="flex flex-wrap gap-x-3 text-xs text-text-secondary">
+            <span>{count(result.blocks.length)} บล็อก</span>
+            <span>
+              {count(result.blocks.filter((b) => b.type === "dialogue").length)} บทพูด
+            </span>
             {flagged.length > 0 ? (
               <span className="text-warning">
-                {" "}
-                · ต้องตรวจ {count(flagged.length)} จุด
+                ต้องตรวจ {count(flagged.length)} จุด
               </span>
             ) : (
-              <span className="text-success"> · ระบุผู้พูดได้ครบ</span>
+              <span className="text-success">ระบุผู้พูดได้ครบ</span>
             )}
           </p>
 
@@ -225,7 +226,7 @@ export function ChatConversionCard({
                   </>
                 ) : (
                   <p className="leading-relaxed text-text-muted">
-                    <span className="mono-label me-1.5 text-[9px]">
+                    <span className="ui-label me-1.5">
                       {block.type === "action" ? "การกระทำ" : "บรรยาย"}
                     </span>
                     {block.text}

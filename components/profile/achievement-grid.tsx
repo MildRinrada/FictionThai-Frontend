@@ -37,7 +37,7 @@ export function AchievementGrid({
 
   return (
     <section className="rounded-xl border border-border bg-surface p-4">
-      <p className="mono-label">เหรียญและความสำเร็จ</p>
+      <p className="ui-label">เหรียญและความสำเร็จ</p>
 
       <ul className="mt-3 grid grid-cols-3 gap-2.5">
         {achievements.showcase.map((item) => (

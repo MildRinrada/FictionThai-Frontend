@@ -333,20 +333,19 @@ export function PromoManager() {
                   {PROMO_SOURCE_LABELS[slide.source]}
                 </span>
                 {slide.source === "paid" ? (
-                  <span className="shrink-0 rounded-sm border border-border px-1.5 font-mono text-[10px] text-text-muted">
+                  <span className="shrink-0 rounded-sm border border-border px-1.5 text-xs text-text-muted">
                     โปรโมท
                   </span>
                 ) : null}
               </span>
-              <span className="mt-0.5 block text-xs text-text-muted">
-                {slide.starts_at || slide.ends_at
-                  ? `${toLocal(slide.starts_at) || "ทันที"} → ${toLocal(slide.ends_at) || "ไม่กำหนดจบ"}`
-                  : "ไม่ตั้งเวลา - ขึ้นตามสวิตช์"}
-                {" · แสดง "}
-                {count(slide.impressions)}
-                {" ครั้ง · คลิก "}
-                {count(slide.clicks)}
-                {" ครั้ง"}
+              <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+                <span>
+                  {slide.starts_at || slide.ends_at
+                    ? `${toLocal(slide.starts_at) || "ทันที"} → ${toLocal(slide.ends_at) || "ไม่กำหนดจบ"}`
+                    : "ไม่ตั้งเวลา - ขึ้นตามสวิตช์"}
+                </span>
+                <span>แสดง {count(slide.impressions)} ครั้ง</span>
+                <span>คลิก {count(slide.clicks)} ครั้ง</span>
               </span>
             </span>
 
@@ -392,7 +391,7 @@ export function PromoManager() {
 
       {editing !== null ? (
         <div className="mt-5 rounded-lg border border-border bg-surface p-4">
-          <p className="mono-label">{editing === "new" ? "สไลด์ใหม่" : "แก้ไขสไลด์"}</p>
+          <p className="ui-label">{editing === "new" ? "สไลด์ใหม่" : "แก้ไขสไลด์"}</p>
 
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <label className="text-sm">
@@ -544,7 +543,7 @@ export function PromoManager() {
           {/* พรีวิว - the same shape the visitor meets, no separate preview
               route to drift from the real thing. */}
           <div className="mt-4">
-            <p className="mono-label">พรีวิว</p>
+            <p className="ui-label">พรีวิว</p>
             <div
               className={`relative mt-2 flex min-h-44 flex-col justify-end overflow-hidden rounded-xl border border-border p-5 ${
                 form.text_side === "end" ? "items-end text-end" : "items-start"
@@ -565,10 +564,10 @@ export function PromoManager() {
               <span className="relative max-w-lg">
                 <span className="flex items-center gap-2">
                   {form.kicker ? (
-                    <span className="mono-label text-white/75">{form.kicker}</span>
+                    <span className="ui-label text-white/75">{form.kicker}</span>
                   ) : null}
                   {form.source === "paid" ? (
-                    <span className="inline-flex min-h-5 items-center rounded-sm border border-white/40 px-1.5 font-mono text-[10px] text-white/85">
+                    <span className="inline-flex min-h-5 items-center rounded-sm border border-white/40 px-1.5 text-xs text-white/85">
                       โปรโมท
                     </span>
                   ) : null}

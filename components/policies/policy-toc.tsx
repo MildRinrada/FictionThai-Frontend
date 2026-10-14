@@ -23,7 +23,7 @@ export function PolicyTocList({ current }: { current: PolicyDoc }) {
     <nav aria-label="สารบัญเอกสาร" className="flex flex-col gap-3.5">
       {POLICY_GROUPS.map((group) => (
         <div key={group}>
-          <p className="mono-label mb-1.5 text-[9px]">{group}</p>
+          <p className="ui-label mb-1.5">{group}</p>
           <ul className="flex flex-col gap-0.5">
             {POLICY_DOCS.filter((doc) => doc.group === group).map((doc) => {
               const selected = doc.slug === current.slug;
@@ -50,8 +50,9 @@ export function PolicyTocList({ current }: { current: PolicyDoc }) {
                       >
                         {doc.title}
                       </span>
-                      <span className="mt-0.5 block font-mono text-[9.5px] text-text-muted">
-                        {doc.version} · {doc.sections.length} หัวข้อ
+                      <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+                        <span>{doc.version}</span>
+                        <span>{doc.sections.length} หัวข้อ</span>
                       </span>
                     </span>
                   </Link>
@@ -68,7 +69,7 @@ export function PolicyTocList({ current }: { current: PolicyDoc }) {
 export function ProviderCard() {
   return (
     <div className="rounded-lg border border-border bg-surface-secondary p-3.5">
-      <p className="mono-label mb-1.5 text-[9px]">ผู้ให้บริการ</p>
+      <p className="ui-label mb-1.5">ผู้ให้บริการ</p>
       <p className="text-xs leading-relaxed">
         FictionThai ดำเนินการโดย{" "}
         <strong className="font-semibold">บุคคลธรรมดารายเดียว</strong>{" "}

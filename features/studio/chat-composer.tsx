@@ -830,7 +830,7 @@ export function ChatComposer({
 
       {messages.length === 0 ? (
         <p className="mx-auto max-w-180 rounded-lg border border-dashed border-border p-6 text-center text-sm text-text-secondary">
-          เลือกผู้พูดด้านล่าง แล้วเริ่มพิมพ์ได้เลย - Enter ส่ง · Tab สลับผู้พูด ·
+          เลือกผู้พูดด้านล่าง แล้วเริ่มพิมพ์ได้เลย - Enter ส่ง, Tab สลับผู้พูด,
           วางบทที่ร่างไว้หลายบรรทัดได้ (รูปแบบ ชื่อ: ข้อความ)
         </p>
       ) : null}
@@ -1121,7 +1121,7 @@ export function ChatComposer({
                   }
                 }}
                 aria-label="พิมพ์ข้อความ"
-                title="Enter ส่ง · Shift+Enter ขึ้นบรรทัด · Tab สลับผู้พูด · ↑ แก้ข้อความล่าสุด · @ชื่อ สลับผู้พูด"
+                title="Enter ส่ง, Shift+Enter ขึ้นบรรทัด, Tab สลับผู้พูด, ↑ แก้ข้อความล่าสุด, @ชื่อ สลับผู้พูด"
                 placeholder={active ? `พิมพ์ในนาม ${active.name}…` : "พิมพ์ข้อความ…"}
                 className={`relative max-h-40 w-full resize-none bg-transparent px-2 py-2 text-[15px] leading-relaxed field-sizing-content placeholder:text-text-muted focus:outline-none ${
                   tokenList.length > 0 ? "caret-text text-transparent" : ""
@@ -1187,7 +1187,7 @@ export function ChatComposer({
           {/* Two shortcuts people actually reach for; the rest live in the
               box's own tooltip (item 6). */}
           <p className="mt-1 text-end text-xs text-text-muted">
-            Enter ส่ง · Tab สลับผู้พูด
+            Enter ส่ง, Tab สลับผู้พูด
           </p>
         </div>
       </div>
@@ -1201,14 +1201,18 @@ export function ChatComposer({
             className="flex max-h-[80vh] w-full max-w-md flex-col rounded-xl border border-border bg-surface p-4 shadow-xl"
           >
             <p className="text-sm font-medium">วางเป็นบทสนทนา?</p>
-            <p className="mt-1 text-xs text-text-secondary">
-              {count(pastePending.rows.filter((row) => row.message_type === "message").length)}{" "}
-              ข้อความ ·{" "}
-              {count(pastePending.rows.filter((row) => row.message_type === "separator").length)}{" "}
-              ฉาก
-              {pastePending.newcomers.length > 0
-                ? ` · ผู้พูดใหม่เข้าแถบ: ${pastePending.newcomers.join(", ")}`
-                : ""}
+            <p className="mt-1 flex flex-wrap gap-x-3 text-xs text-text-secondary">
+              <span>
+                {count(pastePending.rows.filter((row) => row.message_type === "message").length)}{" "}
+                ข้อความ
+              </span>
+              <span>
+                {count(pastePending.rows.filter((row) => row.message_type === "separator").length)}{" "}
+                ฉาก
+              </span>
+              {pastePending.newcomers.length > 0 ? (
+                <span>ผู้พูดใหม่เข้าแถบ: {pastePending.newcomers.join(", ")}</span>
+              ) : null}
             </p>
             <ol className="mt-3 flex flex-1 flex-col gap-1.5 overflow-y-auto rounded-md border border-hairline bg-background p-2.5">
               {pastePending.rows.map((row, at) =>
@@ -1588,7 +1592,7 @@ function MessageRow({
         <button
           type="button"
           onClick={onClick}
-          title="คลิกเพื่อแก้ · Shift+คลิกเพื่อเลือกหลายข้อความ"
+          title="คลิกเพื่อแก้, Shift+คลิกเพื่อเลือกหลายข้อความ"
           className={`rounded-2xl px-4 py-2.5 text-start text-[15px] leading-relaxed whitespace-pre-wrap ${
             right
               ? `bg-primary text-white hover:opacity-90 ${groupStart ? "rounded-tr-1" : ""}`
@@ -1697,7 +1701,7 @@ function RowEditor({
   if (message.message_type !== "message") {
     return (
       <div className="py-1">
-        <p className="mono-label mb-1">
+        <p className="ui-label mb-1">
           {message.message_type === "separator" ? "คั่นฉาก" : "ข้อความระบบ"}
         </p>
         {field}
@@ -1766,7 +1770,7 @@ function EditorFooter({
       >
         ลบ
       </button>
-      <span className="text-text-muted">Enter บันทึก · Esc ยกเลิก</span>
+      <span className="text-text-muted">Enter บันทึก, Esc ยกเลิก</span>
     </span>
   );
 }

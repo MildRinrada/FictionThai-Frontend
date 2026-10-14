@@ -10,7 +10,7 @@ import type { OutlineSection } from "@/lib/outline";
  * revising a long chapter: what is in here, how much of it is there, and where
  * is the work left. The third one is why this sits beside the assistant rather
  * than replacing it - a panel that says "พบ 43 จุด" tells a writer there is a
- * lot to do; `จงหลี่ · 1,240 คำ · 6 จุด` tells them WHERE it is.
+ * lot to do; `จงหลี่ 1,240 คำ 6 จุด` tells them WHERE it is.
  *
  * It is a reading of the manuscript, never a change to it: clicking a row moves
  * the view, and nothing else. See `lib/outline.ts` for what counts as a heading
@@ -79,7 +79,7 @@ export function ChapterOutline({
   return (
     <nav aria-label="สารบัญในตอนนี้">
       {!compact ? (
-        <p className="mono-label flex items-center justify-between gap-2">
+        <p className="ui-label flex items-center justify-between gap-2">
           <span>สารบัญในตอนนี้</span>
           <span className="font-normal text-text-muted">{count(sections.length)} หัวข้อ</span>
         </p>
@@ -106,18 +106,15 @@ export function ChapterOutline({
                 <span className="line-clamp-2 text-[13px] leading-snug">
                   {section.title}
                 </span>
-                <span className="flex items-center gap-1.5 text-[11px] text-text-muted">
+                <span className="flex items-center gap-x-2.5 text-[11px] text-text-muted">
                   <span className="tabular-nums">
                     {count(section.words)} {countUnit}
                   </span>
                   {pending > 0 ? (
-                    <>
-                      <span aria-hidden>·</span>
-                      <span className="flex items-center gap-0.5 text-warning">
-                        <span aria-hidden className="size-1.5 rounded-full bg-warning" />
-                        <span className="tabular-nums">{count(pending)}</span> จุด
-                      </span>
-                    </>
+                    <span className="flex items-center gap-0.5 text-warning">
+                      <span aria-hidden className="size-1.5 rounded-full bg-warning" />
+                      <span className="tabular-nums">{count(pending)}</span> จุด
+                    </span>
                   ) : null}
                 </span>
               </button>

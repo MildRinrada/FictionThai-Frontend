@@ -312,7 +312,7 @@ describe("the status strip", () => {
 
     // All three in ONE row that stays put, rather than scattered around a page
     // the writer has to scroll back up through.
-    const strip = screen.getByText(/~\d+ นาที/).closest("p");
+    const strip = screen.getByText(/อ่านราว \d+ นาที/).closest("p");
     expect(strip?.textContent).toMatch(/\d+ คำ/);
     expect(within(strip as HTMLElement).getByText("บันทึกไว้ครบแล้ว")).toBeInTheDocument();
   });

@@ -210,7 +210,7 @@ function RequestResult({
             <li key={s.id} className="rounded-md border border-border p-2.5 text-sm">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-surface-secondary px-1.5 py-0.5 text-xs text-text-secondary">
-                  AI · {TYPE_LABELS[s.type] ?? s.type}
+                  {TYPE_LABELS[s.type] ?? s.type} (AI)
                 </span>
                 <span
                   data-testid="ai-suggestion-status"

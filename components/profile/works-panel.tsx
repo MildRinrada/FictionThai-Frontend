@@ -169,9 +169,8 @@ function SingleWork({ novel, isOwner }: { novel: Novel; isOwner: boolean }) {
         >
           {novel.title}
         </Link>
-        <p className="mt-1.5 flex flex-wrap items-center gap-x-2 text-xs text-text-secondary">
+        <p className="mt-1.5 flex flex-wrap items-center gap-x-3 text-xs text-text-secondary">
           <span>{SINGLE_STATUS[novel.status] ?? novel.status}</span>
-          <span aria-hidden>·</span>
           <span>
             {novel.uses_chapter_navigation ? `${novel.chapter_count} ตอน` : "จบในตอน"}
           </span>

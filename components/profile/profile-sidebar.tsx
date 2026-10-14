@@ -44,18 +44,18 @@ export function ProfileSidebar({
       {split ? (
         <>
           <section className="rounded-xl border border-border bg-surface p-4">
-            <p className="mono-label">แนะนำตัว</p>
+            <p className="ui-label">แนะนำตัว</p>
             <Intro intro={intro} links={links} bioEditor={bioEditor} boundaries={profile.boundaries} />
             {extrasEditor}
           </section>
           <section className="rounded-xl border border-border bg-surface p-4">
-            <p className="mono-label">ตัวเลข</p>
+            <p className="ui-label">ตัวเลข</p>
             <Stats rows={stats} />
           </section>
         </>
       ) : (
         <section className="rounded-xl border border-border bg-surface p-4">
-          <p className="mono-label">แนะนำตัว</p>
+          <p className="ui-label">แนะนำตัว</p>
           <Intro intro={intro} links={links} bioEditor={bioEditor} boundaries={profile.boundaries} />
           {extrasEditor}
           {stats.length > 0 ? (
@@ -130,7 +130,7 @@ function profileLinks(profile: PublicProfile): ProfileLink[] {
 function statRows(profile: PublicProfile) {
   const rows: { label: string; value: string }[] = [];
   // A brand-new profile shows nothing rather than a column of zeroes: "0 เรื่อง
-  // · 0 ผู้ติดตาม" reads as a verdict on a person who has just arrived.
+  // 0 ผู้ติดตาม" reads as a verdict on a person who has just arrived.
   if (profile.novel_count > 0) {
     rows.push({ label: "ผลงาน", value: `${count(profile.novel_count)} เรื่อง` });
   }
@@ -166,7 +166,7 @@ function Stats({ rows }: { rows: { label: string; value: string }[] }) {
 function SupportCard({ url }: { url: string }) {
   return (
     <section className="rounded-xl border border-border bg-surface p-4">
-      <p className="mono-label">สนับสนุนนักเขียน</p>
+      <p className="ui-label">สนับสนุนนักเขียน</p>
       <p className="mt-2 text-sm text-text-secondary">
         ช่องทางสนับสนุนของนักเขียนเอง FictionThai ไม่เกี่ยวข้องกับการโอนเงิน
       </p>

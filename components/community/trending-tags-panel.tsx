@@ -19,7 +19,7 @@ export function TrendingTagsPanel({ items }: { items: TrendingTag[] }) {
       aria-labelledby="trending-tags-heading"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <h2 id="trending-tags-heading" className="mono-label">
+      <h2 id="trending-tags-heading" className="ui-label">
         แท็กที่กำลังพูดถึง
       </h2>
 

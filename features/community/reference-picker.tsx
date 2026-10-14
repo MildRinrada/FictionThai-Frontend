@@ -318,7 +318,7 @@ function AttachedSummary({
   onRemove: () => void;
 }) {
   const label = reference.chapter_id
-    ? `${reference.novel_title} · ตอนที่ ${reference.chapter_number ?? ""}${
+    ? `${reference.novel_title} ตอนที่ ${reference.chapter_number ?? ""}${
         reference.chapter_title ? ` ${reference.chapter_title}` : ""
       }`
     : reference.novel_title;
@@ -327,7 +327,7 @@ function AttachedSummary({
     <div className="rounded-md border border-border bg-background p-3">
       <div className="flex items-start gap-3">
         <span className="min-w-0 flex-1">
-          <span className="mono-label block text-[10px]">
+          <span className="ui-label block">
             {reference.chapter_id ? "แนบ 1 ตอน" : "แนบทั้งเรื่อง"}
           </span>
           <span className="mt-0.5 block truncate font-serif text-sm font-semibold">

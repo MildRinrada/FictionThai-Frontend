@@ -392,7 +392,7 @@ export default async function StudioOverviewPage({
           <StatCard
             label="ความยาวรวมทั้งเรื่อง"
             value={words > 0 ? `${count(words)} คำ` : "-"}
-            hint={words > 0 ? `รวมทุกตอน · ~${count(readingMinutes(words))} นาทีอ่าน` : undefined}
+            hint={words > 0 ? `รวมทุกตอน (~${count(readingMinutes(words))} นาทีอ่าน)` : undefined}
           />
         </ul>
       )}
@@ -690,7 +690,7 @@ function StatCard({
 }) {
   return (
     <li className="rounded-lg border border-border bg-surface px-4 py-3.5">
-      <p className="mono-label">{label}</p>
+      <p className="ui-label">{label}</p>
       <div className="mt-2 flex items-end justify-between gap-2">
         <p className="font-serif text-xl font-semibold tabular-nums">{value}</p>
         {series && series.some((point) => point > 0) ? (

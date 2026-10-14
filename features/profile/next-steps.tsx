@@ -10,7 +10,7 @@ import type { PublicProfile } from "@/types/profile";
 
 /**
  * The owner's onboarding, shrunk to ONE line (profile review 2026-08,
- * section B): "โปรไฟล์ยังไม่ครบ X/N · ดูสิ่งที่ทำได้" - it expands on press,
+ * section B): "โปรไฟล์ยังไม่ครบ X/N ดูสิ่งที่ทำได้" - it expands on press,
  * closes for good on ปิดถาวร, and never eats the page the way the old card
  * did. Owner-only by mounting: `/profile` renders it, the public page never
  * does.
@@ -116,7 +116,7 @@ export function NextSteps({ profile }: { profile: PublicProfile }) {
               {count(doneCount)}/{count(steps.length)}
             </span>
           </span>
-          <span className="text-text-secondary">· ดูสิ่งที่ทำได้</span>
+          <span className="ms-1 text-text-secondary">ดูสิ่งที่ทำได้</span>
         </button>
         <button
           type="button"

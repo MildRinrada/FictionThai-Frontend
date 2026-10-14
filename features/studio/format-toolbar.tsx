@@ -471,7 +471,7 @@ export function FormatToolbar({
           trigger={<Icon name="external" size={16} />}
         >
           <form onSubmit={addLink} className="w-72">
-            <label htmlFor="format-link" className="mono-label block">
+            <label htmlFor="format-link" className="ui-label block">
               ลิงก์ไปที่
             </label>
             <input
@@ -527,7 +527,7 @@ export function FormatToolbar({
               chapter is open (`referrerpolicy=no-referrer`).
             */}
             <form onSubmit={addImageURL} className="mt-3 border-t border-hairline pt-3">
-              <label htmlFor="format-image-url" className="mono-label block">
+              <label htmlFor="format-image-url" className="ui-label block">
                 หรือวางลิงก์รูปจากเว็บอื่น
               </label>
               <input
@@ -621,7 +621,7 @@ export function FormatToolbar({
       */}
       {imagePicked ? (
         <div className="flex flex-wrap items-center gap-2 border-t border-hairline px-3 py-2">
-          <span className="mono-label">รูปที่เลือก</span>
+          <span className="ui-label">รูปที่เลือก</span>
 
           <span className="flex items-center gap-0.5">
             {ALIGN_TOOLS.map((tool) => (
@@ -677,7 +677,7 @@ export function FormatToolbar({
           </span>
 
           <p className="ms-auto text-xs text-text-muted">
-            คลิกที่รูปเพื่อเลือก · คลิกที่ข้อความเพื่อเลิกเลือก
+            คลิกที่รูปเพื่อเลือก, คลิกที่ข้อความเพื่อเลิกเลือก
           </p>
         </div>
       ) : null}

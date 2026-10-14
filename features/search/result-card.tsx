@@ -173,9 +173,9 @@ export function ResultRow({
           <QuickActions novel={novel} signedIn={signedIn} />
         </div>
 
-        <p className="mt-0.5 text-xs text-text-secondary">
-          {authorName(novel)}
-          {novel.fandom ? <span className="text-text-muted"> · ด้อม: {novel.fandom}</span> : null}
+        <p className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-secondary">
+          <span>{authorName(novel)}</span>
+          {novel.fandom ? <span className="text-text-muted">ด้อม: {novel.fandom}</span> : null}
         </p>
 
         {novel.tagline || novel.description ? (

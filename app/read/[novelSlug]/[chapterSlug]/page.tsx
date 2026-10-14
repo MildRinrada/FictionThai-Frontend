@@ -21,7 +21,7 @@ import {
   fetchNovel,
   fetchVariables,
 } from "@/lib/fiction-server";
-import { chapterLabel, count, readingMinutes } from "@/lib/format";
+import { chapterLabel, count, readingMinutes, wordsIn } from "@/lib/format";
 import { hasDialogue } from "@/lib/prose-chat";
 import { readerKindForFormat } from "@/types/fiction";
 import type { Chapter } from "@/types/novel";
@@ -93,6 +93,13 @@ export default async function ReaderPage({ params, searchParams }: PageProps) {
   const chapterName =
     chapter.title ?? chapterLabel(novel.chapter_unit, chapter.chapter_number);
 
+  // The API's word_count splits on whitespace, which reports a Thai paragraph
+  // as one word. Prose is counted here with the same Thai-aware rule as the
+  // editor; chat and headcanon chapters keep the server figure. Server-only
+  // render, so the ICU difference that keeps the editor's count client-side
+  // cannot cause a hydration mismatch here.
+  const words = chapter.content ? wordsIn(chapter.content) : chapter.word_count;
+
   // อ่านแบบแชท is offered only where it means something (§13O): a prose
   // chapter that actually contains dialogue. The switch lives in the floating
   // toolbar now (reader toolbar review 2026-08), not above the text.
@@ -127,21 +134,19 @@ export default async function ReaderPage({ params, searchParams }: PageProps) {
       <main id="main" className="mx-auto w-full max-w-[var(--page-width)] px-5 py-10 sm:px-8">
         <header className="reading-surface mb-9 border-b border-reader-rule pb-7 text-center">
           {novel.uses_chapter_navigation ? (
-            <p className="mono-label text-reader-muted">
-              {chapterLabel(novel.chapter_unit, chapter.chapter_number)} · Chapter{" "}
-              {chapter.chapter_number}
+            <p className="text-base text-reader-muted">
+              {chapterLabel(novel.chapter_unit, chapter.chapter_number)}
             </p>
           ) : null}
           <h1 className="mt-2.5 font-serif text-[26px] leading-tight font-semibold tracking-tight sm:text-[32px]">
             {chapterName}
           </h1>
-          <p className="mt-3 text-sm text-reader-muted">
-            {novel.author.display_name ?? novel.author.username}
-            {chapter.word_count > 0 ? (
-              <>
-                {" · "}
-                {count(chapter.word_count)} คำ · ~{readingMinutes(chapter.word_count)} นาที
-              </>
+          <p className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-1 text-base text-reader-muted">
+            <span>โดย {novel.author.display_name ?? novel.author.username}</span>
+            {words > 0 ? (
+              <span>
+                {count(words)} คำ อ่านราว {readingMinutes(words)} นาที
+              </span>
             ) : null}
           </p>
         </header>
@@ -286,12 +291,7 @@ function ChapterNav({
           href={`${base}/${chapter.next_chapter_id}`}
           className="flex items-center justify-between gap-4 rounded-lg bg-primary px-5 py-4 text-white hover:opacity-95"
         >
-          <span>
-            <span className="mono-label block text-white">ต่อไป</span>
-            <span className="mt-1 block font-serif text-lg font-semibold">
-              อ่านตอนถัดไป
-            </span>
-          </span>
+          <span className="font-serif text-lg font-semibold">อ่านตอนถัดไป</span>
           <Icon name="arrow-right" size={20} />
         </Link>
       ) : (

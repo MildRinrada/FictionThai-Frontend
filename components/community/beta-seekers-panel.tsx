@@ -20,7 +20,7 @@ export function BetaSeekersPanel({ items }: { items: CommunityPost[] }) {
       aria-labelledby="beta-seekers-heading"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <h2 id="beta-seekers-heading" className="mono-label">
+      <h2 id="beta-seekers-heading" className="ui-label">
         กำลังหาเบต้า/คู่เขียน
       </h2>
 

@@ -80,6 +80,7 @@ export function PromoCarousel({ slides }: { slides: PromoSlide[] }) {
     >
       <Slide
         slide={slide}
+        clearArrows={!single}
         onNavigate={() => {
           pingSlideClick(slide.id);
           router.push(slide.link_url);
@@ -137,9 +138,12 @@ export function PromoCarousel({ slides }: { slides: PromoSlide[] }) {
  */
 function Slide({
   slide,
+  clearArrows,
   onNavigate,
 }: {
   slide: PromoSlide;
+  /** Pad the copy clear of the prev/next buttons, which sit on its edges. */
+  clearArrows: boolean;
   onNavigate: () => void;
 }) {
   const textEnd = slide.text_side === "end";
@@ -153,9 +157,9 @@ function Slide({
         event.preventDefault();
         onNavigate();
       }}
-      className={`group relative flex min-h-58 flex-1 flex-col justify-end p-6 ${
-        textEnd ? "items-end text-end" : "items-start"
-      }`}
+      className={`group relative flex min-h-58 flex-1 flex-col justify-end py-6 ${
+        clearArrows ? "px-14" : "px-6"
+      } ${textEnd ? "items-end text-end" : "items-start"}`}
       style={{ backgroundColor: slide.bg_color ?? "#292731" }}
     >
       {slide.image_url ? (
@@ -177,10 +181,10 @@ function Slide({
       <span className="relative max-w-lg">
         <span className="flex flex-wrap items-center gap-2">
           {slide.kicker ? (
-            <span className="mono-label text-white/75">{slide.kicker}</span>
+            <span className="ui-label text-white/75">{slide.kicker}</span>
           ) : null}
           {slide.source === "paid" ? (
-            <span className="inline-flex min-h-5 items-center rounded-sm border border-white/40 px-1.5 font-mono text-[10px] text-white/85">
+            <span className="inline-flex min-h-5 items-center rounded-sm border border-white/40 px-1.5 text-xs text-white/85">
               โปรโมท
             </span>
           ) : null}

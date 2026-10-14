@@ -59,5 +59,5 @@ export function tallyLine(tally: ChapterTally): string {
   if (tally.scheduled > 0) parts.push(`ตั้งเวลาไว้ ${tally.scheduled}`);
   if (tally.drafts > 0) parts.push(`ร่าง ${tally.drafts}`);
   if (tally.unpublished > 0) parts.push(`ถอนจากเผยแพร่ ${tally.unpublished}`);
-  return parts.join(" · ");
+  return parts.join(", ");
 }

@@ -34,7 +34,7 @@ export default async function StudioCharactersPage({
 
   return (
     <div>
-      <SectionHeader title={`ตัวละครและไทม์ไลน์ · ${characters.length}`} />
+      <SectionHeader title={`ตัวละครและไทม์ไลน์ (${characters.length})`} />
       <p className="mb-5 max-w-prose text-sm leading-relaxed text-text-secondary">
         ตัวละครที่เพิ่มไว้จะแสดงบนหน้าเรื่องให้ผู้อ่านเห็น -
         กด «ดูตัวอย่างที่ผู้อ่านเห็น» ในการ์ดได้ทุกเมื่อ

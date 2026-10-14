@@ -24,7 +24,7 @@ export function DiscussedPanel({ items }: { items: DiscussedFiction[] }) {
       aria-labelledby="discussed-heading"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <h2 id="discussed-heading" className="mono-label">
+      <h2 id="discussed-heading" className="ui-label">
         เรื่องที่ถูกคุยถึงมากที่สุดสัปดาห์นี้
       </h2>
 

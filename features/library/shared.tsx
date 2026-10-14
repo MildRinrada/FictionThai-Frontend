@@ -48,8 +48,7 @@ export function NovelFacts({ novel }: { novel: Novel }) {
         </span>
       ) : null}
       <span>{statusLabel(novel.status)}</span>
-      <span aria-hidden>·</span>
-      <span>
+      <span className="ms-1.5">
         {novel.uses_chapter_navigation ? `${count(novel.chapter_count)} ตอน` : "จบในตอน"}
       </span>
     </span>

@@ -114,8 +114,8 @@ export function AchievementManager() {
       {view.enabled ? (
         <>
           <p className="mt-4 text-xs text-text-secondary">
-            เลือกได้ {view.showcase_min}-{view.showcase_max} อันเพื่อโชว์บนโปรไฟล์ ·
-            เลือกแล้ว {showcased.length}
+            เลือกได้ {view.showcase_min}-{view.showcase_max} อันเพื่อโชว์บนโปรไฟล์
+            (เลือกแล้ว {showcased.length})
           </p>
 
           {(["path", "identity", "egg"] as const).map((family) => {
@@ -123,7 +123,7 @@ export function AchievementManager() {
             if (items.length === 0) return null;
             return (
               <section key={family} className="mt-5">
-                <p className="mono-label">{FAMILY_LABEL[family]}</p>
+                <p className="ui-label">{FAMILY_LABEL[family]}</p>
                 <ul className="mt-2 flex flex-col gap-2">
                   {items.map((item) => (
                     <li
@@ -191,7 +191,7 @@ export function AchievementManager() {
           })}
 
           <p className="mt-5 rounded-lg border border-dashed border-border p-3 text-xs text-text-muted">
-            ของลับ: เจอแล้ว {view.eggs.unlocked} / ?? · ที่ยังไม่เจอเราไม่บอกนะ
+            ของลับ: เจอแล้ว {view.eggs.unlocked} / ?? ส่วนที่ยังไม่เจอเราไม่บอกนะ
             บอกแล้วมันจะไม่สนุก
           </p>
         </>

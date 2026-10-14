@@ -565,7 +565,7 @@ export function SearchView({
                               chips
                                 .slice(0, 3)
                                 .map((chip) => chip.label)
-                                .join(" · "),
+                                .join(", "),
                           }),
                         );
                         setJustSaved(true);
@@ -977,9 +977,9 @@ function AuthorResults({
               )}
               <span className="min-w-0">
                 <span className="block truncate text-sm font-medium text-text">{name}</span>
-                <span className="block text-xs text-text-secondary">
-                  @{author.username}
-                  {author.is_author ? " · มีผลงานเผยแพร่" : ""}
+                <span className="flex flex-wrap gap-x-3 text-xs text-text-secondary">
+                  <span>@{author.username}</span>
+                  {author.is_author ? <span>มีผลงานเผยแพร่</span> : null}
                 </span>
               </span>
             </Link>
@@ -1057,9 +1057,9 @@ function ShelfResults({
             >
               <span className="min-w-0">
                 <span className="block truncate text-sm font-medium text-text">{shelf.name}</span>
-                <span className="mt-0.5 block truncate text-xs text-text-secondary">
-                  โดย {owner}
-                  {shelf.note ? ` · ${shelf.note}` : ""}
+                <span className="mt-0.5 flex min-w-0 gap-x-3 text-xs text-text-secondary">
+                  <span className="min-w-0 truncate">โดย {owner}</span>
+                  {shelf.note ? <span className="min-w-0 truncate">{shelf.note}</span> : null}
                 </span>
               </span>
               <span className="shrink-0 font-mono text-xs text-text-muted">

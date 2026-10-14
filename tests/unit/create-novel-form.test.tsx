@@ -114,13 +114,13 @@ describe("what the create form asks", () => {
 
     // The identity block (13W-2): cover + title + blurb TOGETHER at the top -
     // the trio every card renders - with the cover optional, unduplicated
-    // ("A5 · ไม่บังคับ" once, under the frame), and no required mark or red.
+    // ("A5 (ไม่บังคับ)" once, under the frame), and no required mark or red.
     // The frame itself is COVER_ASPECT, so what a writer sees here is the crop
     // every shelf card will show - not a 2:3 box that re-crops later.
     const coverSlot = screen.getByText("ปก").closest("button") as HTMLElement;
     expect(coverSlot.textContent).not.toContain("*");
     expect(coverSlot.className).toContain(COVER_ASPECT);
-    expect(screen.getByText("A5 · ไม่บังคับ")).toBeInTheDocument();
+    expect(screen.getByText("A5 (ไม่บังคับ)")).toBeInTheDocument();
     expect(screen.queryByText("อัปโหลดทีหลังได้")).not.toBeInTheDocument();
     const identity = screen
       .getByLabelText(/ชื่อเรื่อง/)
@@ -291,7 +291,7 @@ describe("what the create form submits", () => {
 
     await waitFor(() => expect(createNovel).toHaveBeenCalled());
     const sent = createNovel.mock.calls[0][0];
-    expect(sent.content_warning).toBe("ความรุนแรง · คำหยาบ");
+    expect(sent.content_warning).toBe("ความรุนแรง, คำหยาบ");
     expect(sent.content_warning_spoiler).toBe(true);
   });
 
@@ -384,7 +384,7 @@ describe("what the create form submits", () => {
     render(<CreateNovelForm />);
 
     expect(screen.getByRole("button", { name: /สร้างผลงาน/ })).toBeDisabled();
-    expect(screen.getByText(/ยังขาด: ชื่อเรื่อง · เรตอายุ/)).toBeInTheDocument();
+    expect(screen.getByText(/ยังขาด: ชื่อเรื่อง, เรตอายุ/)).toBeInTheDocument();
 
     fillTitle("ยังไม่เลือกเรต");
     expect(screen.getByRole("button", { name: /สร้างผลงาน/ })).toBeDisabled();

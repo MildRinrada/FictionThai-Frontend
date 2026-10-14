@@ -235,7 +235,7 @@ export function SiteSearch({ signedIn }: { signedIn: boolean }) {
             return (
               <div key={row.key}>
                 {heading ? (
-                  <p className="mono-label px-3.5 pt-2 pb-1 text-text-muted">{heading}</p>
+                  <p className="ui-label px-3.5 pt-2 pb-1 text-text-muted">{heading}</p>
                 ) : null}
                 <button
                   type="button"

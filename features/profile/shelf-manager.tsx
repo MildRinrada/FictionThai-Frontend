@@ -144,7 +144,7 @@ function ShelfComposer({ onCreated }: { onCreated: (shelf: Shelf) => void }) {
       }}
     >
       <label className="block">
-        <span className="mono-label">ชื่อชั้นใหม่</span>
+        <span className="ui-label">ชื่อชั้นใหม่</span>
         <input
           value={name}
           onChange={(event) => setName(event.target.value)}
@@ -154,7 +154,7 @@ function ShelfComposer({ onCreated }: { onCreated: (shelf: Shelf) => void }) {
         />
       </label>
       <label className="mt-3 block">
-        <span className="mono-label">คำอธิบายสั้น ๆ (ไม่ใส่ก็ได้)</span>
+        <span className="ui-label">คำอธิบายสั้น ๆ (ไม่ใส่ก็ได้)</span>
         <input
           value={note}
           onChange={(event) => setNote(event.target.value)}

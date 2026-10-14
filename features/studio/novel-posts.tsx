@@ -68,9 +68,11 @@ function PostRow({ post }: { post: CommunityPost }) {
               @{post.author.username}
             </span>
           </span>
-          <span className="mt-0.5 block text-xs text-text-muted">
+          <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
             <time dateTime={post.created_at}>{relativeTime(post.created_at)}</time>
-            {post.reference?.chapter_title ? ` · แนบ ${post.reference.chapter_title}` : ""}
+            {post.reference?.chapter_title ? (
+              <span>แนบ {post.reference.chapter_title}</span>
+            ) : null}
           </span>
         </span>
 

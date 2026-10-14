@@ -23,7 +23,7 @@ export function CharacterSection({ characters }: { characters: Character[] }) {
       <SectionHeader
         id="cast-heading"
         title="ตัวละครในเรื่องนี้"
-        subLabel={`${characters.length} characters`}
+        description={`${characters.length} ตัวละคร`}
       />
 
       <ul className="grid gap-3 sm:grid-cols-2">

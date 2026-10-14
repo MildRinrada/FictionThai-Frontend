@@ -179,7 +179,7 @@ export const PERMISSION_FIELDS = [
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="border-t border-hairline pt-4 first:border-t-0 first:pt-0">
-      <h4 className="mono-label">{title}</h4>
+      <h4 className="ui-label">{title}</h4>
       <div className="mt-3 flex flex-col gap-4">{children}</div>
     </section>
   );

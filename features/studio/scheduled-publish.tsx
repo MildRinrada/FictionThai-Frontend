@@ -50,7 +50,7 @@ export function ScheduledPublish({
       aria-labelledby="scheduled-publish-heading"
       className="rounded-lg border border-warning/30 bg-warning/8 p-4"
     >
-      <p id="scheduled-publish-heading" className="mono-label flex items-center gap-1.5">
+      <p id="scheduled-publish-heading" className="ui-label flex items-center gap-1.5">
         <Icon name="clock" size={14} />
         ตั้งเวลาเผยแพร่ไว้แล้ว
       </p>

@@ -70,7 +70,7 @@ function RatingBadge({ novel }: { novel: Novel }) {
   const gated = ageRatingLabel(novel.age_rating);
   return (
     <span
-      className={`inline-flex min-h-5 items-center rounded-sm border px-1.5 font-mono text-[10px] ${
+      className={`inline-flex min-h-5 items-center rounded-sm border px-1.5 text-xs ${
         gated
           ? "border-secondary-300 bg-secondary-50 text-secondary-600"
           : "border-border bg-surface-secondary text-text-muted"
@@ -100,7 +100,7 @@ function FormatChip({ novel }: { novel: Novel }) {
   if (!label) return null;
   return (
     <span
-      className={`inline-flex min-h-5 items-center rounded-sm border px-1.5 font-mono text-[10px] ${
+      className={`inline-flex min-h-5 items-center rounded-sm border px-1.5 text-xs ${
         highlighted ? "border-primary-200 text-primary" : "border-border text-text-muted"
       }`}
     >
@@ -144,7 +144,7 @@ export function NovelCoverCard({
       <span className="relative block">
         <Cover url={novel.cover_url} title={novel.title} />
         {rank !== undefined ? (
-          <span className="absolute start-1.5 top-1.5 inline-flex min-w-6 items-center justify-center rounded-sm bg-[#292731]/85 px-1.5 py-0.5 font-mono text-[11px] font-medium text-white tabular-nums">
+          <span className="absolute start-1.5 top-1.5 inline-flex min-w-6 items-center justify-center rounded-sm bg-[#292731]/85 px-1.5 py-0.5 text-xs font-medium text-white tabular-nums">
             {rank}
           </span>
         ) : null}
@@ -158,14 +158,14 @@ export function NovelCoverCard({
           {authorName(novel)}
         </span>
       ) : null}
-      <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-text-muted">
+      <span className="mt-0.5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-text-muted">
         {/* The story's status rides every card (profile review section H):
             จบแล้ว/กำลังเขียน is a fact readers decide by, same as the rating. */}
-        <span>
-          {[readership(novel), extent(novel), STATUS_LABELS[novel.status] ?? ""]
-            .filter(Boolean)
-            .join(" · ")}
-        </span>
+        {[readership(novel), extent(novel), STATUS_LABELS[novel.status] ?? ""]
+          .filter(Boolean)
+          .map((fact, index) => (
+            <span key={index}>{fact}</span>
+          ))}
         {chips}
       </span>
     </Link>
@@ -196,8 +196,9 @@ export function NovelRow({ novel }: { novel: Novel }) {
           <RatingBadge novel={novel} />
           <FormatChip novel={novel} />
         </span>
-        <span className="mt-0.5 block truncate text-xs text-text-muted">
-          {authorName(novel)} · {extent(novel)}
+        <span className="mt-0.5 flex gap-x-2.5 text-xs text-text-muted">
+          <span className="truncate">{authorName(novel)}</span>
+          <span className="shrink-0">{extent(novel)}</span>
         </span>
       </span>
       <span className="shrink-0 text-xs text-text-muted">
@@ -233,7 +234,7 @@ export function NovelCard({ novel }: NovelCardProps) {
           <span className="line-clamp-2">{novel.title}</span>
         </span>
 
-        <span className="mt-1 block text-xs text-text-secondary">
+        <span className="mt-1 flex flex-wrap gap-x-2.5 text-xs text-text-secondary">
           {[
             authorName(novel),
             extent(novel),
@@ -241,7 +242,9 @@ export function NovelCard({ novel }: NovelCardProps) {
             readership(novel),
           ]
             .filter(Boolean)
-            .join(" · ")}
+            .map((fact, index) => (
+              <span key={index}>{fact}</span>
+            ))}
         </span>
 
         {novel.description ? (

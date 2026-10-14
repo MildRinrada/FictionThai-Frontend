@@ -287,7 +287,7 @@ describe("publishing guards (#2, #8)", () => {
     fireEvent.click(screen.getByRole("button", { name: "เผยแพร่" }));
     await waitFor(() => expect(precheckChapter).toHaveBeenCalledWith("my-fiction", one.id));
     expect(
-      await screen.findByText(/พบ 2 จุดที่ควรดู: คำผิด 1 · ตัวละครอาจหลุด 1/),
+      await screen.findByText(/พบ 2 จุดที่ควรดู: คำผิด 1, ตัวละครอาจหลุด 1/),
     ).toBeInTheDocument();
     // Advisory: the publish button stays live either way.
     expect(screen.getByRole("button", { name: "ยืนยันเผยแพร่" })).toBeEnabled();
@@ -346,7 +346,11 @@ describe("the meta line (#3, #4, #5, #6, #7)", () => {
     });
     // เฮดแคนอน in Thai (#6), first on the meta line, and the empty state is
     // said exactly once (#4).
-    expect(screen.getByText(/เฮดแคนอน · ยังไม่มีเนื้อหา · แก้ไข/)).toBeInTheDocument();
+    const meta = screen.getByText("ยังไม่มีเนื้อหา").parentElement as HTMLElement;
+    const pieces = Array.from(meta.children).map((piece) => piece.textContent);
+    expect(pieces[0]).toBe("เฮดแคนอน");
+    expect(pieces[1]).toBe("ยังไม่มีเนื้อหา");
+    expect(pieces[2]).toMatch(/^แก้ไข /);
     expect(screen.queryByText(/Headcanon/)).not.toBeInTheDocument();
     expect(screen.queryByText(/ยังไม่มีเนื้อหาในรูปแบบที่แสดงผล/)).not.toBeInTheDocument();
   });
@@ -411,7 +415,7 @@ describe("the meta line (#3, #4, #5, #6, #7)", () => {
     // The status is a chip with a background, and the published row also
     // shows WHEN readers got it - not just the writer's own edit time.
     expect(screen.getByText("เผยแพร่แล้ว").className).toContain("bg-success/10");
-    expect(screen.getByText(/· เผยแพร่ /)).toBeInTheDocument();
+    expect(screen.getByText(/^เผยแพร่ /)).toBeInTheDocument();
   });
 
   it("flags a content-bearing draft that sat for over a week as ร่างค้าง", () => {

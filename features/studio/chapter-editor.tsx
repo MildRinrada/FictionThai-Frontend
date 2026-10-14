@@ -1045,14 +1045,11 @@ export function ChapterEditor({
           ตอนทั้งหมด
         </Link>
 
-        <p className="mono-label flex min-w-0 items-center gap-1.5">
+        <p className="ui-label flex min-w-0 items-center gap-3">
           {novelTitle ? (
-            <>
-              <span className="max-w-36 truncate xl:max-w-56" title={novelTitle}>
-                {novelTitle}
-              </span>
-              <span aria-hidden>·</span>
-            </>
+            <span className="max-w-36 truncate xl:max-w-56" title={novelTitle}>
+              {novelTitle}
+            </span>
           ) : null}
           <span className="shrink-0">
             {chapterUnit || "ตอนที่"} {chapter.chapter_number}
@@ -1068,13 +1065,11 @@ export function ChapterEditor({
           dot and a word - on a 20,000-word manuscript, "บันทึกแล้ว 14:32" is
           the difference between trusting the tab and re-saving out of fear.
         */}
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-muted">
+        <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-muted">
           {pane === "prose" ? (
             <>
               <span className="tabular-nums">{`${hydrated ? count(words) : "–"} คำ`}</span>
-              <span aria-hidden>·</span>
-              <span>{`~${readingMinutes(words)} นาที`}</span>
-              <span aria-hidden>·</span>
+              <span>{`อ่านราว ${readingMinutes(words)} นาที`}</span>
             </>
           ) : null}
           <span aria-live="polite" className="flex items-center gap-1.5">
@@ -1100,10 +1095,7 @@ export function ChapterEditor({
             )}
           </span>
           {findings.length > 0 ? (
-            <>
-              <span aria-hidden>·</span>
-              <span className="text-warning">{`${count(findings.length)} จุดที่เสนอไว้`}</span>
-            </>
+            <span className="text-warning">{`${count(findings.length)} จุดที่เสนอไว้`}</span>
           ) : null}
         </p>
 
@@ -1268,7 +1260,7 @@ export function ChapterEditor({
           */}
           <label
             htmlFor="chapter-title"
-            className={pane === "headcanon" ? "mono-label block" : "sr-only"}
+            className={pane === "headcanon" ? "ui-label block" : "sr-only"}
           >
             {pane === "headcanon" ? "หัวข้อของชุดนี้" : "ชื่อตอน"}
           </label>
@@ -1310,7 +1302,7 @@ export function ChapterEditor({
                 the mode's name and the word ล็อก - readable, with the full
                 sentence in the tooltip. */}
             <span
-              title={`${PANE_NOTES[pane]} · โหมดของตอนล็อกตั้งแต่สร้าง เปลี่ยนภายหลังไม่ได้`}
+              title={`${PANE_NOTES[pane]} โหมดของตอนล็อกตั้งแต่สร้าง เปลี่ยนภายหลังไม่ได้`}
               className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-3 py-1.5 text-[13px]"
             >
               <span aria-hidden className="size-1.5 rounded-full bg-primary" />
@@ -1386,7 +1378,7 @@ export function ChapterEditor({
                 {pane === "chat"
                   ? // Bubbles and scenes are different things and count apart
                     // (chat-editor review item D14).
-                    `${count(messages.filter((m) => m.message_type === "message").length)} ข้อความ · ${count(messages.filter((m) => m.message_type === "separator").length)} ฉาก`
+                    `${count(messages.filter((m) => m.message_type === "message").length)} ข้อความ ${count(messages.filter((m) => m.message_type === "separator").length)} ฉาก`
                   : `${count(entries.length)} รายการ`}
               </p>
             ) : null}
@@ -1409,7 +1401,7 @@ export function ChapterEditor({
           {activeOutline.length > 0 ? (
             <details className="mt-4 rounded-lg border border-border bg-surface px-3.5 py-2.5 lg:hidden">
               <summary className="cursor-pointer text-[13px] text-text-secondary">
-                สารบัญในตอนนี้ · {count(activeOutline.length)} หัวข้อ
+                สารบัญในตอนนี้ ({count(activeOutline.length)} หัวข้อ)
               </summary>
               <div className="mt-2 max-h-72 overflow-y-auto">
                 <ChapterOutline
@@ -1455,7 +1447,7 @@ export function ChapterEditor({
                     ร่างแชทของตอนร้อยแก้ว - แก้ไขได้เต็มรูปแบบ แต่มีข้อจำกัด
                   </p>
                   <p className="mt-0.5">
-                    แก้ที่นี่ไม่เปลี่ยนร้อยแก้วต้นฉบับ ·
+                    แก้ที่นี่ไม่เปลี่ยนร้อยแก้วต้นฉบับ
                     ผู้อ่านยังเห็นร้อยแก้วตามเดิมจนกว่าจะเปลี่ยนรูปแบบการแสดงผลของตอนเป็นแชท
                   </p>
 
@@ -1631,7 +1623,7 @@ export function ChapterEditor({
             panel that had both was the reason neither was easy to find.
           */}
           <section className="rounded-lg border border-border bg-surface p-4">
-            <p className="mono-label">สถานะตอนนี้</p>
+            <p className="ui-label">สถานะตอนนี้</p>
             <p className="mt-2 flex items-center gap-1.5 text-sm">
               <span
                 aria-hidden
@@ -1948,7 +1940,7 @@ function VariablePreview({
 
   return (
     <section className="mt-3 rounded-lg border border-primary-200 bg-primary-50 p-4">
-      <p className="mono-label">ตัวอย่างที่ผู้อ่านจะเห็น</p>
+      <p className="ui-label">ตัวอย่างที่ผู้อ่านจะเห็น</p>
       <p className="mt-2 font-serif text-[15px] leading-loose whitespace-pre-wrap">
         {preview || "ยังไม่มีเนื้อหาในรูปแบบนี้"}
       </p>
@@ -1999,7 +1991,7 @@ function ChatDraftPreview({
 
   return (
     <section className="mt-3 rounded-lg border border-primary-200 bg-primary-50/50 p-4">
-      <p className="mono-label">ตัวอย่างที่ผู้อ่านจะเห็น</p>
+      <p className="ui-label">ตัวอย่างที่ผู้อ่านจะเห็น</p>
       <div className="mt-3">
         {rendered.length > 0 ? (
           <ChatView messages={rendered} slots={slots} />
@@ -2139,7 +2131,7 @@ function EntryComposer({
         <Icon name="users" size={16} className="mt-0.5 shrink-0 text-primary" />
         <div className="text-xs leading-relaxed text-text-secondary">
           <p className="font-medium text-text">
-            หนึ่งตอน = หนึ่งหัวข้อ · หนึ่งกล่อง = หนึ่งตัวละคร
+            หนึ่งตอน = หนึ่งหัวข้อ, หนึ่งกล่อง = หนึ่งตัวละคร
           </p>
           <p className="mt-0.5">
             ตั้งหัวข้อไว้ด้านบน แล้วเพิ่มกล่องทีละตัวละคร
@@ -2365,7 +2357,7 @@ function EntryComposer({
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-text-muted">
-                  {hydrated ? count(wordsIn(entry.body)) : "–"} คำ · ย่อหน้าเว้นบรรทัดได้ตามใจ ไม่จำกัดความยาว
+                  {hydrated ? count(wordsIn(entry.body)) : "–"} คำ (ย่อหน้าเว้นบรรทัดได้ตามใจ ไม่จำกัดความยาว)
                 </p>
               </div>
             </li>

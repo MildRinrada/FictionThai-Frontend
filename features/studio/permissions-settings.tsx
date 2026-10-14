@@ -91,7 +91,7 @@ export function PermissionsSettings({
 
       {permissions.allow_derivative ? (
         <div className="mt-4">
-          <label htmlFor="derivative-terms" className="mono-label block">
+          <label htmlFor="derivative-terms" className="ui-label block">
             เงื่อนไขของงานต่อยอด
           </label>
           <input
@@ -106,7 +106,7 @@ export function PermissionsSettings({
       ) : null}
 
       <div className="mt-5 border-t border-hairline pt-4">
-        <p className="mono-label">การสนับสนุน</p>
+        <p className="ui-label">การสนับสนุน</p>
         <label
           className={`mt-2.5 flex w-fit items-center gap-2.5 text-sm ${
             hasDonationLink ? "" : "opacity-60"

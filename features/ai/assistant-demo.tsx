@@ -91,7 +91,7 @@ export function AssistantDemo() {
       aria-labelledby="ai-demo"
       className="rounded-lg border border-border bg-surface p-4"
     >
-      <p id="ai-demo" className="mono-label">
+      <p id="ai-demo" className="ui-label">
         ลองดูว่าผู้ช่วยทำงานยังไง
       </p>
       <p className="mt-1 text-xs text-text-secondary">
@@ -149,7 +149,7 @@ export function AssistantDemo() {
                   <span className="rounded bg-surface-secondary px-1.5 py-0.5 text-xs text-text-secondary">
                     {TYPE_LABELS[s.type] ?? s.type}
                     {SEVERITY_LABELS[s.severity]
-                      ? ` · ${SEVERITY_LABELS[s.severity]}`
+                      ? ` (${SEVERITY_LABELS[s.severity]})`
                       : null}
                   </span>
                   <button

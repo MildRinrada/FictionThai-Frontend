@@ -22,7 +22,7 @@ export function referenceHref(reference: PostReference): string {
   return `/novel/${novel}`;
 }
 
-/** "ปลายฝนที่ท่าน้ำเก่า · ตอนที่ 7 น้ำขึ้นตอนตีสาม" */
+/** "ปลายฝนที่ท่าน้ำเก่า ตอนที่ 7 น้ำขึ้นตอนตีสาม" */
 export function referenceTitle(reference: PostReference): string {
   if (!reference.chapter_id) return reference.novel_title;
 
@@ -34,11 +34,11 @@ export function referenceTitle(reference: PostReference): string {
     .filter(Boolean)
     .join(" ");
 
-  return [reference.novel_title, chapter].filter(Boolean).join(" · ");
+  return [reference.novel_title, chapter].filter(Boolean).join(" ");
 }
 
 /**
- * "ฟิค · 2,140 คำ · ~9 นาที" - only the parts that have a source.
+ * "ฟิค", "2,140 คำ", "~9 นาที" - only the parts that have a source.
  *
  * A fiction-level card has no word count, so it gets no reading time either;
  * an unknown future format contributes nothing rather than the word

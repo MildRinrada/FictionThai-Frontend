@@ -326,8 +326,12 @@ export function PostSearch({ state, active, discussed }: Props) {
           </div>
 
           {input.trim() !== "" ? (
-            <p className="mt-1.5 font-mono text-[11px] text-text-muted">
-              from:@ชื่อ · to:@ชื่อ · has:chapter · fandom:&quot;…&quot; · #แท็ก
+            <p className="mt-1.5 flex flex-wrap gap-x-3 font-mono text-[11px] text-text-muted">
+              <span>from:@ชื่อ</span>
+              <span>to:@ชื่อ</span>
+              <span>has:chapter</span>
+              <span>fandom:&quot;…&quot;</span>
+              <span>#แท็ก</span>
             </p>
           ) : null}
         </>
@@ -467,7 +471,7 @@ export function PostSearch({ state, active, discussed }: Props) {
 }
 
 function GroupLabel({ children }: { children: React.ReactNode }) {
-  return <p className="mono-label px-1 pt-1.5 pb-1 text-[10px]">{children}</p>;
+  return <p className="ui-label px-1 pt-1.5 pb-1">{children}</p>;
 }
 
 function SuggestionRow({

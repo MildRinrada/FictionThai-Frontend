@@ -47,7 +47,7 @@ export function ReferenceCard({
       />
 
       <span className="min-w-0 flex-1">
-        <span className="mono-label block text-[10px]">{label}</span>
+        <span className="ui-label block">{label}</span>
         <span className="mt-0.5 flex items-baseline gap-1.5">
           <span className="min-w-0 truncate font-serif text-sm font-semibold group-hover:text-primary">
             {referenceTitle(reference)}
@@ -60,8 +60,10 @@ export function ReferenceCard({
             </span>
           ) : null}
         </span>
-        <span className="mt-0.5 block truncate text-xs text-text-muted">
-          {referenceMeta(reference).join(" · ")}
+        <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-text-muted">
+          {referenceMeta(reference).map((part) => (
+            <span key={part}>{part}</span>
+          ))}
         </span>
       </span>
 

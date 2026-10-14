@@ -20,7 +20,6 @@ import { useId, useState } from "react";
 export interface AboutPanel {
   key: string;
   label: string;
-  subLabel: string;
   text: string;
 }
 
@@ -35,12 +34,12 @@ export function AboutTabs({ panels }: { panels: AboutPanel[] }) {
   if (panels.length === 1) {
     return (
       <section aria-labelledby={`${id}-single`} className="mb-10">
-        <div className="mb-3 flex items-baseline gap-3 border-b border-hairline pb-2">
-          <h2 id={`${id}-single`} className="font-serif text-lg font-semibold">
-            {current.label}
-          </h2>
-          <span className="mono-label">{current.subLabel}</span>
-        </div>
+        <h2
+          id={`${id}-single`}
+          className="mb-3 border-b border-hairline pb-2 font-serif text-lg font-semibold"
+        >
+          {current.label}
+        </h2>
         <p className="max-w-prose text-[15px] leading-loose whitespace-pre-wrap text-text-secondary">
           {current.text}
         </p>

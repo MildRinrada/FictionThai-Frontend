@@ -92,7 +92,7 @@ export function SiteFooter() {
 
           {COLUMNS.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <p className="mono-label text-[#8f8a99]">{column.heading}</p>
+              <p className="ui-label text-[#8f8a99]">{column.heading}</p>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {column.links.map((link) => (
                   <li key={link.href}>

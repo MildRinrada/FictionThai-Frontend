@@ -114,7 +114,8 @@ export function EditableName({ profile }: { profile: PublicProfile }) {
         className="w-full max-w-md rounded-md border border-primary bg-surface px-2 py-1 font-serif text-2xl font-semibold tracking-tight outline-none sm:text-[29px]"
       />
       <p className="mt-1 text-xs text-text-muted">
-        Enter บันทึก · Esc ยกเลิก {busy ? "· กำลังบันทึก…" : ""}
+        Enter บันทึก, Esc ยกเลิก
+        {busy ? <span className="ms-2">กำลังบันทึก…</span> : null}
       </p>
       {error ? <p className="mt-1 text-xs text-error">{error}</p> : null}
     </div>
@@ -323,7 +324,7 @@ export function EditableExtras({ profile }: { profile: PublicProfile }) {
                 if (event.key === "Escape") setEditingBoundaries(false);
               }}
               aria-label="คำเตือนและขอบเขตของนักเขียน"
-              placeholder="เช่น งดรับคุยเรื่องสปอยล์ · ไม่รับรีเควสต์คู่ที่ไม่ได้เขียน"
+              placeholder="เช่น งดรับคุยเรื่องสปอยล์, ไม่รับรีเควสต์คู่ที่ไม่ได้เขียน"
               className="w-full rounded-md border border-primary bg-background px-3 py-2 text-xs leading-relaxed field-sizing-content focus:outline-none"
             />
             <div className="mt-1 flex items-center gap-2 text-xs">

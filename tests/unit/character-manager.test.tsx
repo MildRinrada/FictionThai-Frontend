@@ -185,10 +185,11 @@ describe("CharacterManager", () => {
       chapters,
     });
 
-    expect(screen.getByText(/ตัวเอก · ปรากฏ 2 ตอน/)).toBeInTheDocument();
-    expect(
-      screen.getByText(/ยังไม่ได้ระบุบทบาท · ยังไม่ได้เลือกตอนที่ปรากฏ/),
-    ).toBeInTheDocument();
+    const castMeta = screen.getByText("ปรากฏ 2 ตอน").parentElement as HTMLElement;
+    expect(within(castMeta).getByText("ตัวเอก")).toBeInTheDocument();
+    const blankMeta = screen.getByText("ยังไม่ได้เลือกตอนที่ปรากฏ")
+      .parentElement as HTMLElement;
+    expect(within(blankMeta).getByText("ยังไม่ได้ระบุบทบาท")).toBeInTheDocument();
   });
 
   it("uploads a portrait under the character_avatar purpose and attaches it (#9)", async () => {
@@ -277,12 +278,12 @@ describe("CharacterManager", () => {
     renderManager({ cast: [member({ name: "มินตรา" })], chapters });
     fireEvent.click(screen.getByRole("button", { name: /แก้ไข/ }));
 
-    // Exact names, so the timeline's own cells ("มินตรา - 1 · …") stay out.
+    // Exact names, so the timeline's own cells ("มินตรา - ตอนที่ 1 …") stay out.
     expect(
-      screen.getByRole("button", { name: "1 · คืนแรกในเมือง" }),
+      screen.getByRole("button", { name: "ตอนที่ 1 คืนแรกในเมือง" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /^2 · ยังไม่เสร็จ\s*ร่าง$/ }),
+      screen.getByRole("button", { name: /^ตอนที่ 2 ยังไม่เสร็จ\s*ร่าง$/ }),
     ).toBeInTheDocument();
   });
 
@@ -306,7 +307,7 @@ describe("CharacterManager", () => {
 
     const timeline = screen.getByRole("table");
     const cell = within(timeline).getByRole("button", {
-      name: `มินตรา - 2 · ตอนที่ 2`,
+      name: `มินตรา - ตอนที่ 2`,
     });
     expect(cell).toHaveAttribute("aria-pressed", "false");
     fireEvent.click(cell);

@@ -37,7 +37,6 @@ const SECTION_SIZE = 6;
 interface Section {
   key: string;
   title: string;
-  subLabel: string;
   preset: string;
   query: Record<string, string | number>;
 }
@@ -48,28 +47,24 @@ const SECTIONS: Section[] = [
   {
     key: "latest",
     title: "มาใหม่ล่าสุด",
-    subLabel: "Newest fiction",
     preset: "latest",
     query: { sort: "latest" },
   },
   {
     key: "popular",
     title: "ยอดนิยม",
-    subLabel: "Most bookmarked",
     preset: "popular",
     query: { sort: "popular" },
   },
   {
     key: "updated",
     title: "อัปเดตล่าสุด",
-    subLabel: "Recently updated",
     preset: "updated",
     query: { sort: "updated" },
   },
   {
     key: "completed",
     title: "จบแล้ว อ่านรวดเดียว",
-    subLabel: "Complete",
     preset: "completed",
     query: { status: "completed", sort: "popular" },
   },
@@ -107,8 +102,7 @@ export default async function ExplorePage() {
     <main id="main">
       <PageContainer className="py-10 pb-16">
         <header className="border-b border-hairline pb-6">
-          <p className="mono-label">Explore</p>
-          <h1 className="mt-2 font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
+          <h1 className="font-serif text-2xl font-semibold tracking-tight sm:text-[29px]">
             สำรวจนิยาย
           </h1>
           <p className="mt-2 max-w-prose text-sm text-text-secondary">
@@ -148,7 +142,6 @@ export default async function ExplorePage() {
               <SectionHeader
                 id={`${section.key}-heading`}
                 title={section.title}
-                subLabel={section.subLabel}
                 href={`/novels?preset=${section.preset}`}
               />
               <ul className="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 lg:grid-cols-6">
